@@ -1,4 +1,10 @@
-### No Teste de Performance 1, você vai colocar em prática as seguintes habilidades desenvolvidas durante as etapas 1 e 2:
+# Fundamentos do desenvolvimento JAVA: Teste de Performance 1
+### Aluno: 
+Thiago Marques Torres
+
+## Descrição:
+
+### Você vai colocar em prática as seguintes habilidades desenvolvidas durante as etapas 1 e 2:
 
 
 - Instalar programas necessários para o ambiente de desenvolvimento Java no computador
