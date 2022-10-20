@@ -21,4 +21,4 @@ A disciplina Fundamentos do Desenvolvimento Java prepara você para a prova de c
 
 [^1]: (Atualizados ao longo da disciplina)
 
-[logo]: https://github.com/TorresmThiago/GRLEDS01C2-N2-LC---Desenvolvimento-JAVA/logo-infnet.png "Logo Instituto Infnet"
+[logo]: https://github.com/TorresmThiago/GRLEDS01C2-N2-LC---Desenvolvimento-JAVA/blob/main/logo-infnet.png "Logo Instituto Infnet"
