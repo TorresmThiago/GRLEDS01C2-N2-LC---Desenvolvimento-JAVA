@@ -27,7 +27,6 @@ public class ControleAcademico {
                 alunos[indexAlunosCadastrados] = nome;
                 notasAV1[indexAlunosCadastrados] = notaAV1;
                 notasAV2[indexAlunosCadastrados] = notaAV2;
-                indexAlunosCadastrados++;
             } else {
                 System.out.println("Nota inválida");
             }
@@ -39,11 +38,13 @@ public class ControleAcademico {
         } else {
             System.out.println("Limite de alunos atingido!");
         }
+
+        terminarLinhaConsole();
     }
     
     private static void consultarBoletimAluno(int alunoId) {  
 
-        if(alunoId >= 0 && alunoId < indexAlunosCadastrados) {2
+        if(alunoId >= 0 && alunoId + 1 < indexAlunosCadastrados) {
             float media = (notasAV1[alunoId] + notasAV2[alunoId]) / 2;
             String situacao = "Reprovado";
 
@@ -72,8 +73,16 @@ public class ControleAcademico {
         } else {
             System.out.println("Não há alunos cadastrados!");
         }
+
+        terminarLinhaConsole();
     }
     
+    private static void terminarLinhaConsole() {
+        Scanner entrada = new Scanner(System.in);
+        System.out.println("Pressione ENTER para continuar...");
+        entrada.nextLine();
+    }
+
     public static void main(String[] args) {
         
         Scanner entrada = new Scanner(System.in);
@@ -93,15 +102,18 @@ public class ControleAcademico {
                     System.out.println("Digite o número do aluno: ");
                     int numeroAluno = entrada.nextInt();
                     consultarBoletimAluno(numeroAluno);
+                    terminarLinhaConsole();
                     break;
                 case 3:
                     consultarNotasTurma();
                     break;
                 case 4:
+                    System.out.println("Saindo...");
                     System.exit(0);
                     break;
                 default:
                     System.out.println("Opção inválida!");
+                    terminarLinhaConsole();
                     break;
             }
         }
