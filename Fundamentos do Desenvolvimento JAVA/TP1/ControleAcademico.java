@@ -6,11 +6,11 @@ public class ControleAcademico {
     private static float notasAV1[] = new float[100];
     private static float notasAV2[] = new float[100];
 
-    private static int vetorIndex = 0;
+    private static int indexAlunosCadastrados = 0;
 
     private static void cadastrarAluno() {  
 
-        if (vetorIndex < 100) {
+        if (indexAlunosCadastrados < 100) {
             
             Scanner entrada = new Scanner(System.in);
             System.out.println("Digite o nome do aluno: ");
@@ -24,15 +24,15 @@ public class ControleAcademico {
             float notaAV2 = entrada.nextFloat();
             
             if(notaAV1 >= 0 && notaAV1 <= 10 && notaAV2 >= 0 && notaAV2 <= 10) {
-                alunos[vetorIndex] = nome;
-                notasAV1[vetorIndex] = notaAV1;
-                notasAV2[vetorIndex] = notaAV2;
-                vetorIndex++;
+                alunos[indexAlunosCadastrados] = nome;
+                notasAV1[indexAlunosCadastrados] = notaAV1;
+                notasAV2[indexAlunosCadastrados] = notaAV2;
+                indexAlunosCadastrados++;
             } else {
                 System.out.println("Nota inválida");
             }
             
-            vetorIndex++;
+            indexAlunosCadastrados++;
             
             System.out.println("Aluno cadastrado com sucesso!");
 
@@ -41,15 +41,10 @@ public class ControleAcademico {
         }
     }
     
-    private static void consultarBoletimAluno() {  
+    private static void consultarBoletimAluno(int alunoId) {  
 
-        Scanner entrada = new Scanner(System.in);
-        System.out.println("Digite o número do aluno: ");
-
-        int numeroAluno = entrada.nextInt();
-
-        if(numeroAluno >= 0 && numeroAluno < vetorIndex) {
-            float media = (notasAV1[numeroAluno] + notasAV2[numeroAluno]) / 2;
+        if(alunoId >= 0 && alunoId < indexAlunosCadastrados) {2
+            float media = (notasAV1[alunoId] + notasAV2[alunoId]) / 2;
             String situacao = "Reprovado";
 
             if(media >= 7) {
@@ -58,9 +53,9 @@ public class ControleAcademico {
                 situacao = "Prova final";
             }
 
-            System.out.println("Aluno: " + alunos[numeroAluno]);
-            System.out.println("AV1: " + notasAV1[numeroAluno]);
-            System.out.println("AV2: " + notasAV2[numeroAluno]);
+            System.out.println("Aluno: " + alunos[alunoId]);
+            System.out.println("AV1: " + notasAV1[alunoId]);
+            System.out.println("AV2: " + notasAV2[alunoId]);
             System.out.println("Média: " + media);
             System.out.println("Situação: " + situacao);
         } else {
@@ -68,7 +63,16 @@ public class ControleAcademico {
         }
     }
     
-    private static void consultarNotasTurma() {    }
+    private static void consultarNotasTurma() {
+        if(indexAlunosCadastrados > 0) {
+            for(int i = 0; i < indexAlunosCadastrados; i++) {
+                consultarBoletimAluno(i);
+                System.out.println("----------------------------");
+            }
+        } else {
+            System.out.println("Não há alunos cadastrados!");
+        }
+    }
     
     public static void main(String[] args) {
         
@@ -86,7 +90,9 @@ public class ControleAcademico {
                     cadastrarAluno();
                     break;
                 case 2:
-                    consultarBoletimAluno();
+                    System.out.println("Digite o número do aluno: ");
+                    int numeroAluno = entrada.nextInt();
+                    consultarBoletimAluno(numeroAluno);
                     break;
                 case 3:
                     consultarNotasTurma();
