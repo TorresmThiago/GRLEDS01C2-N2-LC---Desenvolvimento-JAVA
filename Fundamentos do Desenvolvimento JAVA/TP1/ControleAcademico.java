@@ -2,7 +2,32 @@ import java.util.Scanner;
 
 public class ControleAcademico {
 
-    private static void cadastrarAluno() {    }
+    private static String alunos[] = new String[100];
+    private static float notasAV1[] = new float[100];
+    private static float notasAV2[] = new float[100];
+
+    private static int vetorIndex = 0;
+
+    private static void cadastrarAluno() {  
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Digite o nome do aluno: ");
+
+        String nome = sc.nextLine();
+        System.out.println("Digite a nota da AV1: ");
+        
+        float notaAV1 = sc.nextFloat();
+        System.out.println("Digite a nota da AV2: ");
+        
+        float notaAV2 = sc.nextFloat();
+        
+        alunos[vetorIndex] = nome;
+        notasAV1[vetorIndex] = notaAV1;
+        notasAV2[vetorIndex] = notaAV2;
+
+        vetorIndex++;
+
+        System.out.println("Aluno cadastrado com sucesso!");
+    }
     
     private static void consultarBoletimAluno() {    }
     
