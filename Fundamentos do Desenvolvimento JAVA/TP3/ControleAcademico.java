@@ -1,11 +1,11 @@
+import java.util.Arrays;
 import java.util.Scanner;
 import Exceptions.*;
+import Entidades.*;
 
 public class ControleAcademico {
 
-    private static String alunos[] = new String[100];
-    private static float notasAV1[] = new float[100];
-    private static float notasAV2[] = new float[100];
+    private static Aluno alunos[] = new Aluno[100];
 
     private static int indexAlunosCadastrados = 0;
 
@@ -34,23 +34,22 @@ public class ControleAcademico {
     }
 
     private static void cadastrarAluno() throws NotaInvalidaException, NomeInvalidoException {
-
         if (indexAlunosCadastrados < 100) {
 
             Scanner entrada = new Scanner(System.in);
-            String nome;
-            float notaAV1;
-            float notaAV2;
+            Aluno aluno = new Aluno();
 
             try {
                 System.out.println("Digite o nome do aluno: ");
-                nome = validaEntradaNome(entrada.nextLine());
+                String[] nomeCompleto = validaEntradaNome(entrada.nextLine()).split(" ");
+                aluno.setNome(nomeCompleto[0]);
+                aluno.setSobrenome(Arrays.copyOfRange(nomeCompleto, 1, nomeCompleto.length).toString());
 
                 System.out.println("Digite a nota da AV1: ");
-                notaAV1 = validaEntradaNota(entrada.nextFloat());
+                aluno.setNotaAV1(validaEntradaNota(Float.parseFloat(entrada.nextLine())));
 
                 System.out.println("Digite a nota da AV2: ");
-                notaAV2 = validaEntradaNota(entrada.nextFloat());
+                aluno.setNotaAV2(validaEntradaNota(Float.parseFloat(entrada.nextLine())));
 
             } catch (NomeInvalidoException e) {
                 System.out.println(e.getMessage());
@@ -68,21 +67,12 @@ public class ControleAcademico {
                 return;
 
             } finally {
-                entrada.close();
+                // entrada.close();
             }
 
-            if (notaAV1 >= 0 && notaAV1 <= 10 && notaAV2 >= 0 && notaAV2 <= 10) {
-                alunos[indexAlunosCadastrados] = nome;
-                notasAV1[indexAlunosCadastrados] = notaAV1;
-                notasAV2[indexAlunosCadastrados] = notaAV2;
-            } else {
-                System.out.println("Nota inválida");
-            }
-
+            alunos[indexAlunosCadastrados] = aluno;
             System.out.println("Aluno cadastrado com sucesso! Número no registro: " + indexAlunosCadastrados);
-
             indexAlunosCadastrados++;
-
         } else {
             System.out.println("Limite de alunos atingido!");
         }
@@ -91,24 +81,10 @@ public class ControleAcademico {
     }
 
     private static void consultarBoletimAluno(int alunoId) {
-
-        if (alunoId >= 0 && alunoId + 1 < indexAlunosCadastrados) {
-            float media = (notasAV1[alunoId] + notasAV2[alunoId]) / 2;
-            String situacao = "Reprovado";
-
-            if (media >= 7) {
-                situacao = "Aprovado";
-            } else if (media >= 4 && media < 7) {
-                situacao = "Prova final";
-            }
-
-            System.out.println("Aluno: " + alunos[alunoId]);
-            System.out.println("AV1: " + notasAV1[alunoId]);
-            System.out.println("AV2: " + notasAV2[alunoId]);
-            System.out.println("Média: " + media);
-            System.out.println("Situação: " + situacao);
+        if (alunoId >= 0 && alunoId < indexAlunosCadastrados) {
+            System.out.println(alunos[alunoId].toString());
         } else {
-            System.out.println("Aluno não encontrado!");
+            System.out.println("Aluno não encontrado.");
         }
     }
 
@@ -133,17 +109,18 @@ public class ControleAcademico {
 
     public static void main(String[] args) throws NotaInvalidaException, NomeInvalidoException {
 
-        Scanner entrada = new Scanner(System.in);
+        Scanner entrada;
 
         while (true) {
+            entrada = new Scanner(System.in);
+
             System.out.println("\nMenu do controle acadêmico - TP1");
             System.out.println("1 - Cadastrar aluno");
             System.out.println("2 - Consultar Boletim de um aluno");
             System.out.println("3 - Consultar notas da turma");
             System.out.println("4 - Sair");
             System.out.println("Digite a opção desejada: ");
-            int opcao = entrada.nextInt();
-            switch (opcao) {
+            switch (entrada.nextInt()) {
                 case 1:
                     cadastrarAluno();
                     break;
@@ -158,6 +135,7 @@ public class ControleAcademico {
                     break;
                 case 4:
                     System.out.println("Saindo...");
+                    entrada.close();
                     System.exit(0);
                     break;
                 default:
@@ -166,6 +144,5 @@ public class ControleAcademico {
                     break;
             }
         }
-
     }
 }
