@@ -14,6 +14,14 @@ public class ControleAcademico {
             throw new NomeInvalidoException("Nome inválido. O nome deve ter pelo menos 3 caracteres.");
         }
 
+        if (nome.length() > 50) {
+            throw new NomeInvalidoException("Nome inválido. O nome deve ter no máximo 50 caracteres.");
+        }
+
+        if (!nome.contains(" ")) {
+            throw new NomeInvalidoException("Nome inválido. Favor inserir nome e sobrenome.");
+        }
+
         return nome;
     }
 
