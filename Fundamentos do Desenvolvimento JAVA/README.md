@@ -17,6 +17,8 @@ Além disso, você estudará algumas classes fundamentais do Java, que estão di
 ## Links para os trabalhos da disciplina[^1]. 
 
 * [TP1](TP1)
+* [TP3](TP3)
+* [AT](AT)
 
 
 [^1]: (Atualizados ao longo da disciplina)
