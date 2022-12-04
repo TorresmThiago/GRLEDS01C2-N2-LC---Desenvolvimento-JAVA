@@ -1,5 +1,5 @@
 package br.edu.infnet.appseguranca.model.tests;
 
-public class VulnInfraTest {
+public class VulnAPITest {
 
 }

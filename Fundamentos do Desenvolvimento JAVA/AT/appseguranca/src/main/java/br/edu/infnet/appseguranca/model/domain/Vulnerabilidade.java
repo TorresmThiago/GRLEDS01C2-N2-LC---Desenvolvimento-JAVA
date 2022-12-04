@@ -11,10 +11,10 @@ public class Vulnerabilidade {
     private int impacto;
     private int probabilidade;
     private String severidade;
-    private String classificacaoOWASP;
+    private String referencia;
 
     public Vulnerabilidade(int id, String nome, String descricao, String recomendacao, String ataque, String categoria,
-            int impacto, int probabilidade, String severidade, String classificacaoOWASP) {
+            int impacto, int probabilidade, String severidade) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -24,7 +24,6 @@ public class Vulnerabilidade {
         this.impacto = impacto;
         this.probabilidade = probabilidade;
         this.severidade = severidade;
-        this.classificacaoOWASP = classificacaoOWASP;
     }
 
     public int getId() {
@@ -99,11 +98,12 @@ public class Vulnerabilidade {
         this.severidade = severidade;
     }
 
-    public String getClassificacaoOWASP() {
-        return classificacaoOWASP;
+    public String getReferencia() {
+        return referencia;
     }
 
-    public void setClassificacaoOWASP(String classificacaoOWASP) {
-        this.classificacaoOWASP = classificacaoOWASP;
+    public void setReferencia(String referencia) {
+        this.referencia = referencia;
     }
+
 }

@@ -7,18 +7,16 @@ public class Aplicacao {
     private String nome;
     private String demanda;
     private String ambiente;
-    private String perimetro;
     private String endereco;
     private Vulnerabilidade[] vulnerabilidades;
 
-    public Aplicacao(Analise analise, int id, String nome, String demanda, String ambiente, String perimetro,
+    public Aplicacao(Analise analise, int id, String nome, String demanda, String ambiente,
             String endereco, Vulnerabilidade[] vulnerabilidades) {
         this.analise = analise;
         this.id = id;
         this.nome = nome;
         this.demanda = demanda;
         this.ambiente = ambiente;
-        this.perimetro = perimetro;
         this.endereco = endereco;
         this.vulnerabilidades = vulnerabilidades;
     }
@@ -61,14 +59,6 @@ public class Aplicacao {
 
     public void setAmbiente(String ambiente) {
         this.ambiente = ambiente;
-    }
-
-    public String getPerimetro() {
-        return perimetro;
-    }
-
-    public void setPerimetro(String perimetro) {
-        this.perimetro = perimetro;
     }
 
     public String getEndereco() {
