@@ -83,24 +83,17 @@ public class Aplicacao {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Aplicacao: ");
-        sb.append(nome);
-        sb.append(" [analise=");
-        sb.append(analise.getTitulo());
-        sb.append("; ambiente=");
-        sb.append(ambiente);
-        sb.append("; demanda=");
-        sb.append(demanda);
-        sb.append("; endereco=");
-        sb.append(endereco);
-        sb.append("; id=");
-        sb.append(id);
-        sb.append("; nome=");
-        sb.append(nome);
-        sb.append("; vulnerabilidades= {");
+        sb.append(String.format("Aplicacao: %s [", nome));
+        sb.append(String.format("analise = %s; ", analise.getTitulo()));
+        sb.append(String.format("ambiente = %s; ", ambiente));
+        sb.append(String.format("demanda = %s; ", demanda));
+        sb.append(String.format("endereco = %s; ", endereco));
+        sb.append(String.format("id = %i; ", id));
+        sb.append(String.format("nome = %s; ", nome));
+        sb.append("vulnerabilidades= {");
 
         for (int i = 0; i < vulnerabilidades.length; i++) {
-            sb.append(vulnerabilidades[i].getNome());
+            sb.append(String.format("id = %i; ", vulnerabilidades[i].getId()));
             sb.append(", ");
         }
 

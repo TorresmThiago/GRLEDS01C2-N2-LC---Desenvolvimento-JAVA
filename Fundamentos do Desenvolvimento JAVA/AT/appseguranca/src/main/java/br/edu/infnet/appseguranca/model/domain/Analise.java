@@ -113,27 +113,16 @@ public class Analise {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Analise [id=");
-        sb.append(id);
-        sb.append(", titulo=");
-        sb.append(titulo);
-        sb.append(", descricao=");
-        sb.append(descricao);
-        sb.append(", cliente=");
-        sb.append(cliente);
-        sb.append(", aplicacao=");
-        sb.append(aplicacao.getNome());
-        sb.append(", atividade=");
-        sb.append(atividade);
-        sb.append(", qtdHoras=");
-        sb.append(qtdHoras);
-        sb.append(", dataInicio=");
-        sb.append(dataInicio);
-        sb.append(", dataFim=");
-        sb.append(dataFim);
-        sb.append(", status=");
-        sb.append(status);
-        sb.append("]");
+        sb.append(String.format("Análise [id = %i ;", id));
+        sb.append(String.format("Título = %s ;", titulo));
+        sb.append(String.format("Descrição = %s ;", descricao));
+        sb.append(String.format("Cliente = %s ;", cliente));
+        sb.append(String.format("Aplicação = %s ;", aplicacao.getNome()));
+        sb.append(String.format("Atividade = %s ;", atividade));
+        sb.append(String.format("Qtd. Horas = %i ;", qtdHoras));
+        sb.append(String.format("Data Início = %s ;", dataInicio));
+        sb.append(String.format("Data Fim = %s ;", dataFim));
+        sb.append(String.format("Status = %s ]", status));
         return sb.toString();
     }
 
