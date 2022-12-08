@@ -113,13 +113,13 @@ public class Analise {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("Análise [id = %i ;", id));
+        sb.append(String.format("Análise [id = %d ;", id));
         sb.append(String.format("Título = %s ;", titulo));
         sb.append(String.format("Descrição = %s ;", descricao));
         sb.append(String.format("Cliente = %s ;", cliente));
         sb.append(String.format("Aplicação = %s ;", aplicacao.getNome()));
         sb.append(String.format("Atividade = %s ;", atividade));
-        sb.append(String.format("Qtd. Horas = %i ;", qtdHoras));
+        sb.append(String.format("Qtd. Horas = %d ;", qtdHoras));
         sb.append(String.format("Data Início = %s ;", dataInicio));
         sb.append(String.format("Data Fim = %s ;", dataFim));
         sb.append(String.format("Status = %s ]", status));
