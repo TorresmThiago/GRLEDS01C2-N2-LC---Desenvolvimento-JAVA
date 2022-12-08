@@ -7,10 +7,14 @@ public class VulnWeb extends Vulnerabilidade {
     private boolean redeInterna;
     private String classificacaoOWASP;
 
+    public VulnWeb() {
+        super();
+    }
+
     public VulnWeb(int id, String nome, String descricao, String recomendacao, String ataque, String categoria,
-            int impacto, int probabilidade, String severidade,
+            int impacto, int probabilidade, String severidade, String referencia,
             String navegador, String[] urlAfetada, boolean redeInterna, String classificacaoOWASP) {
-        super(id, nome, descricao, recomendacao, ataque, categoria, impacto, probabilidade, severidade);
+        super(id, nome, descricao, recomendacao, ataque, categoria, impacto, probabilidade, severidade, referencia);
         this.navegador = navegador;
         this.urlAfetada = urlAfetada;
         this.redeInterna = redeInterna;

@@ -8,9 +8,9 @@ public class VulnAPI extends Vulnerabilidade {
     private String classificacaoOWASPAPI;
 
     public VulnAPI(int id, String nome, String descricao, String recomendacao, String ataque, String categoria,
-            int impacto, int probabilidade, String severidade, String classificacaoOWASPAPI,
+            int impacto, int probabilidade, String severidade, String referencia, String classificacaoOWASPAPI,
             String host, String requisicao, String metodo) {
-        super(id, nome, descricao, recomendacao, ataque, categoria, impacto, probabilidade, severidade);
+        super(id, nome, descricao, recomendacao, ataque, categoria, impacto, probabilidade, severidade, referencia);
         this.host = host;
         this.requisicao = requisicao;
         this.metodo = metodo;

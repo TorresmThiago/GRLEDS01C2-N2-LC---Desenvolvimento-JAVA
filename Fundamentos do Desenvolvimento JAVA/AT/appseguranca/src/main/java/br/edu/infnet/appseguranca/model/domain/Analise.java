@@ -13,6 +13,9 @@ public class Analise {
     private String dataFim;
     private String status;
 
+    public Analise() {
+    }
+
     public Analise(int id, String titulo, String descricao, String cliente, Aplicacao aplicacao, String atividade,
             int qtdHoras, String dataInicio, String dataFim, String status) {
         this.id = id;
@@ -110,17 +113,27 @@ public class Analise {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Analise{id=").append(id);
-        sb.append(", titulo=").append(titulo);
-        sb.append(", descricao=").append(descricao);
-        sb.append(", cliente=").append(cliente);
-        sb.append(", aplicacao=").append(aplicacao);
-        sb.append(", atividade=").append(atividade);
-        sb.append(", qtdHoras=").append(qtdHoras);
-        sb.append(", dataInicio=").append(dataInicio);
-        sb.append(", dataFim=").append(dataFim);
-        sb.append(", status=").append(status);
-        sb.append('}');
+        sb.append("Analise [id=");
+        sb.append(id);
+        sb.append(", titulo=");
+        sb.append(titulo);
+        sb.append(", descricao=");
+        sb.append(descricao);
+        sb.append(", cliente=");
+        sb.append(cliente);
+        sb.append(", aplicacao=");
+        sb.append(aplicacao.getNome());
+        sb.append(", atividade=");
+        sb.append(atividade);
+        sb.append(", qtdHoras=");
+        sb.append(qtdHoras);
+        sb.append(", dataInicio=");
+        sb.append(dataInicio);
+        sb.append(", dataFim=");
+        sb.append(dataFim);
+        sb.append(", status=");
+        sb.append(status);
+        sb.append("]");
         return sb.toString();
     }
 

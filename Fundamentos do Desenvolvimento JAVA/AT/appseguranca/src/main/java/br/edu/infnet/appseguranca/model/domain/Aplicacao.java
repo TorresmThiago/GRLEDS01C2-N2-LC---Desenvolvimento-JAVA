@@ -10,6 +10,9 @@ public class Aplicacao {
     private String endereco;
     private Vulnerabilidade[] vulnerabilidades;
 
+    public Aplicacao() {
+    }
+
     public Aplicacao(Analise analise, int id, String nome, String demanda, String ambiente,
             String endereco, Vulnerabilidade[] vulnerabilidades) {
         this.analise = analise;
@@ -75,6 +78,34 @@ public class Aplicacao {
 
     public void setVulnerabilidades(Vulnerabilidade[] vulnerabilidades) {
         this.vulnerabilidades = vulnerabilidades;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Aplicacao: ");
+        sb.append(nome);
+        sb.append(" [analise=");
+        sb.append(analise.getTitulo());
+        sb.append("; ambiente=");
+        sb.append(ambiente);
+        sb.append("; demanda=");
+        sb.append(demanda);
+        sb.append("; endereco=");
+        sb.append(endereco);
+        sb.append("; id=");
+        sb.append(id);
+        sb.append("; nome=");
+        sb.append(nome);
+        sb.append("; vulnerabilidades= {");
+
+        for (int i = 0; i < vulnerabilidades.length; i++) {
+            sb.append(vulnerabilidades[i].getNome());
+            sb.append(", ");
+        }
+
+        sb.append("} ]");
+        return sb.toString();
     }
 
 }

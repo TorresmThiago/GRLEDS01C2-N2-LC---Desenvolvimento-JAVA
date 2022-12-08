@@ -13,8 +13,11 @@ public class Vulnerabilidade {
     private String severidade;
     private String referencia;
 
+    public Vulnerabilidade() {
+    }
+
     public Vulnerabilidade(int id, String nome, String descricao, String recomendacao, String ataque, String categoria,
-            int impacto, int probabilidade, String severidade) {
+            int impacto, int probabilidade, String severidade, String referencia) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -24,6 +27,7 @@ public class Vulnerabilidade {
         this.impacto = impacto;
         this.probabilidade = probabilidade;
         this.severidade = severidade;
+        this.referencia = referencia;
     }
 
     public int getId() {
