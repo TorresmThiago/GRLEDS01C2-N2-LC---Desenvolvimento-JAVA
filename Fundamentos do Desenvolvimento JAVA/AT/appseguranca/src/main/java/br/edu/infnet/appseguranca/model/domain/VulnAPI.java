@@ -51,13 +51,28 @@ public class VulnAPI extends Vulnerabilidade {
 
     @Override
     public String toString() {
-        return "VulnAPI [host=" + host + ", requisicao=" + requisicao + ", metodo=" + metodo
-                + ", classificacaoOWASPAPI="
-                + classificacaoOWASPAPI + "]";
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("Vulnabilidade API (%d) %s [", this.getId(), this.getNome()));
+        sb.append(String.format("Severidade: %s; ", this.getSeveridade()));
+        sb.append(String.format("Host: %s; ", this.getHost()));
+        sb.append(String.format("Requisição: %s; ", this.getRequisicao()));
+        sb.append(String.format("Método: %s; ", this.getMetodo()));
+        sb.append(String.format("Classificação OWASP API: %s; ", this.getClassificacaoOWASPAPI()));
+        sb.append("]");
+        return sb.toString();
     }
 
     @Override
     public String getSeveridade() {
-        return "";
+        int severidade = this.getImpacto() * this.getProbabilidade();
+        if (severidade <= 3) {
+            return "Baixa";
+        } else if (severidade <= 6) {
+            return "Média";
+        } else if (severidade <= 9) {
+            return "Alta";
+        } else {
+            return "Crítica";
+        }
     }
 }

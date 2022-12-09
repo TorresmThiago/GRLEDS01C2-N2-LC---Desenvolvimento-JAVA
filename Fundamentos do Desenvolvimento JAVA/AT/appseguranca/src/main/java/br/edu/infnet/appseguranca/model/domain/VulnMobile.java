@@ -6,6 +6,10 @@ public class VulnMobile extends Vulnerabilidade {
     private String classificacaoOWASPMobile;
     private String[] pacotesAfetados;
 
+    public VulnMobile() {
+        super();
+    }
+
     public VulnMobile(int id, String nome, String descricao, String recomendacao, String ataque, String categoria,
             int impacto, int probabilidade, String referencia, String classificacaoOWASPMobile,
             String sistemaOperacionalMobile, String[] pacotesAfetados) {
@@ -41,13 +45,38 @@ public class VulnMobile extends Vulnerabilidade {
 
     @Override
     public String toString() {
-        return "VulnMobile [sistemaOperacionalMobile=" + sistemaOperacionalMobile + ", classificacaoOWASPMobile="
-                + classificacaoOWASPMobile + ", pacotesAfetados=" + pacotesAfetados + "]";
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("Vulnabilidade Mobile (%d) %s [", this.getId(), this.getNome()));
+        sb.append(String.format("Severidade: %s; ", this.getSeveridade()));
+        sb.append(String.format("SO: %s; ", this.getSistemaOperacionalMobile()));
+        sb.append("Pacotes afetados: { ");
+
+        for (int i = 0; i < this.getPacotesAfetados().length; i++) {
+            sb.append(String.format("%s", this.getPacotesAfetados()[i]));
+            if (i < this.getPacotesAfetados().length - 1) {
+                sb.append(", ");
+            } else {
+                sb.append("}; ");
+            }
+        }
+
+        sb.append(String.format("Classificação OWASP MOBILE: %s; ", this.getClassificacaoOWASPMobile()));
+        sb.append("]");
+        return sb.toString();
     }
 
     @Override
     public String getSeveridade() {
-        return "";
+        int severidade = this.getImpacto() * this.getProbabilidade();
+        if (severidade <= 3) {
+            return "Baixa";
+        } else if (severidade <= 6) {
+            return "Média";
+        } else if (severidade <= 9) {
+            return "Alta";
+        } else {
+            return "Crítica";
+        }
     }
 
 }

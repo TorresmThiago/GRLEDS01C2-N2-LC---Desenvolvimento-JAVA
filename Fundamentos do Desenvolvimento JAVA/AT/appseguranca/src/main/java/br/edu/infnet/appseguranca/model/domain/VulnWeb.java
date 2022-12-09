@@ -55,12 +55,38 @@ public class VulnWeb extends Vulnerabilidade {
 
     @Override
     public String toString() {
-        return super.toString() + "VulnWeb [navegador=" + navegador + ", urlAfetada=" + urlAfetada + ", redeInterna="
-                + redeInterna + ", classificacaoOWASP=" + classificacaoOWASP + "]";
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("Vulnabilidade Web (%d) %s [", this.getId(), this.getNome()));
+        sb.append(String.format("Severidade: %s; ", this.getSeveridade()));
+        sb.append(String.format("Navegador: %s; ", this.getNavegador()));
+        sb.append("URL afetada: { ");
+
+        for (int i = 0; i < this.getUrlAfetada().length; i++) {
+            sb.append(String.format("%s", this.getUrlAfetada()[i]));
+            if (i < this.getUrlAfetada().length - 1) {
+                sb.append(", ");
+            } else {
+                sb.append("}; ");
+            }
+        }
+
+        sb.append(String.format("Rede interna: %s; ", this.isRedeInterna()));
+        sb.append(String.format("Classificação OWASP: %s; ", this.getClassificacaoOWASP()));
+        sb.append("]");
+        return sb.toString();
     }
 
     @Override
     public String getSeveridade() {
-        return "";
+        int severidade = this.getImpacto() * this.getProbabilidade();
+        if (severidade <= 3) {
+            return "Baixa";
+        } else if (severidade <= 6) {
+            return "Média";
+        } else if (severidade <= 9) {
+            return "Alta";
+        } else {
+            return "Crítica";
+        }
     }
 }
