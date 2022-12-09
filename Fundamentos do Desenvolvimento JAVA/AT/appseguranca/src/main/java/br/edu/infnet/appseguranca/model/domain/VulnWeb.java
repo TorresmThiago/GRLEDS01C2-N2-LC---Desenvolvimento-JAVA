@@ -12,9 +12,9 @@ public class VulnWeb extends Vulnerabilidade {
     }
 
     public VulnWeb(int id, String nome, String descricao, String recomendacao, String ataque, String categoria,
-            int impacto, int probabilidade, String severidade, String referencia,
+            int impacto, int probabilidade, String referencia,
             String navegador, String[] urlAfetada, boolean redeInterna, String classificacaoOWASP) {
-        super(id, nome, descricao, recomendacao, ataque, categoria, impacto, probabilidade, severidade, referencia);
+        super(id, nome, descricao, recomendacao, ataque, categoria, impacto, probabilidade, referencia);
         this.navegador = navegador;
         this.urlAfetada = urlAfetada;
         this.redeInterna = redeInterna;
@@ -51,5 +51,16 @@ public class VulnWeb extends Vulnerabilidade {
 
     public void setClassificacaoOWASP(String classificacaoOWASP) {
         this.classificacaoOWASP = classificacaoOWASP;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "VulnWeb [navegador=" + navegador + ", urlAfetada=" + urlAfetada + ", redeInterna="
+                + redeInterna + ", classificacaoOWASP=" + classificacaoOWASP + "]";
+    }
+
+    @Override
+    public String getSeveridade() {
+        return "";
     }
 }

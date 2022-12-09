@@ -42,7 +42,6 @@ public class AnaliseTest {
         vulnerabilidades[0].setCategoria(" Information Leakage");
         vulnerabilidades[0].setImpacto(1);
         vulnerabilidades[0].setProbabilidade(2);
-        vulnerabilidades[0].setSeveridade("Baixo");
         vulnerabilidades[0].setNavegador("Chrome");
         vulnerabilidades[0].setUrlAfetada(new String[] { "http://localhost:8080/index" });
         vulnerabilidades[0].setRedeInterna(true);

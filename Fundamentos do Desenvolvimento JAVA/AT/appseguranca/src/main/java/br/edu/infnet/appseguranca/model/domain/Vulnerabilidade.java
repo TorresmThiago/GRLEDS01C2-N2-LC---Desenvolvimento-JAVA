@@ -1,6 +1,6 @@
 package br.edu.infnet.appseguranca.model.domain;
 
-public class Vulnerabilidade {
+public abstract class Vulnerabilidade {
 
     private int id;
     private String nome;
@@ -10,14 +10,13 @@ public class Vulnerabilidade {
     private String categoria;
     private int impacto;
     private int probabilidade;
-    private String severidade;
     private String referencia;
 
     public Vulnerabilidade() {
     }
 
     public Vulnerabilidade(int id, String nome, String descricao, String recomendacao, String ataque, String categoria,
-            int impacto, int probabilidade, String severidade, String referencia) {
+            int impacto, int probabilidade, String referencia) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -26,7 +25,6 @@ public class Vulnerabilidade {
         this.categoria = categoria;
         this.impacto = impacto;
         this.probabilidade = probabilidade;
-        this.severidade = severidade;
         this.referencia = referencia;
     }
 
@@ -94,14 +92,6 @@ public class Vulnerabilidade {
         this.probabilidade = probabilidade;
     }
 
-    public String getSeveridade() {
-        return severidade;
-    }
-
-    public void setSeveridade(String severidade) {
-        this.severidade = severidade;
-    }
-
     public String getReferencia() {
         return referencia;
     }
@@ -110,4 +100,20 @@ public class Vulnerabilidade {
         this.referencia = referencia;
     }
 
+    public abstract String getSeveridade();
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("Vulnerabilidade [id = %s; ", id));
+        sb.append(String.format("nome = %s; ", nome));
+        sb.append(String.format("descricao = %s; ", descricao));
+        sb.append(String.format("recomendacao = %s; ", recomendacao));
+        sb.append(String.format("ataque = %s; ", ataque));
+        sb.append(String.format("categoria = %s; ", categoria));
+        sb.append(String.format("impacto = %s; ", impacto));
+        sb.append(String.format("probabilidade = %s; ", probabilidade));
+        sb.append(String.format("referencia = %s]", referencia));
+        return sb.toString();
+    }
 }
