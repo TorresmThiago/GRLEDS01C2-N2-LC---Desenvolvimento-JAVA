@@ -10,7 +10,7 @@ import br.edu.infnet.appseguranca.model.auxiliar.Constantes;
 
 public class AplicacaoTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         Aplicacao aplicacaoTeste = new Aplicacao();
         Analise analiseTeste = new Analise();
@@ -35,19 +35,17 @@ public class AplicacaoTest {
         analiseTeste.setStatus("Em andamento");
         analiseTeste.setAplicacao(aplicacaoTeste);
 
-        vulnerabilidades[0] = new VulnWeb();
-        vulnerabilidades[0].setId(1);
-        vulnerabilidades[0].setNome("Vazamento de informações sensíveis");
-        vulnerabilidades[0].setDescricao(
-                "Identificamos o vazamento de informações sensíveis na aplicação, tais como endereços internos de rede, senhas, etc.");
-        vulnerabilidades[0].setRecomendacao(
-                "Qualquer informação sensível, seja endereços IP's, nomes de máquina ou qualquer outra informação que não seja relevante para o aplicativo devem ser retiradas");
-        vulnerabilidades[0].setImpacto(1);
-        vulnerabilidades[0].setProbabilidade(2);
-        vulnerabilidades[0].setNavegador(Constantes.NAVEGADOR_CHROME);
-        vulnerabilidades[0].setUrlAfetada(new String[] { "http://localhost:8080/index" });
-        vulnerabilidades[0].setRedeInterna(true);
-        vulnerabilidades[0].setClassificacaoOWASP(Constantes.CLASSIFICACAO_OWASP_A3);
+        String nome = "Vazamento de informações sensíveis";
+        String descricao = "Identificamos o vazamento de informações sensíveis na aplicação, tais como endereços internos de rede, senhas, etc.";
+        String recomendacao = "Qualquer informação sensível, seja endereços IP's, nomes de máquina ou qualquer outra informação que não seja relevante para o aplicativo devem ser retiradas";
+        String referencia = "https://www.owasp.org/index.php/Information_exposure";
+        String[] urlAfetada = new String[] { "http://localhost:8080/index" };
+
+        VulnWeb vulnerabilidadeTeste = new VulnWeb(1, nome, descricao, recomendacao, Constantes.RISCO_ALTA,
+                Constantes.RISCO_MEDIA, referencia, Constantes.NAVEGADOR_CHROME, urlAfetada, true,
+                Constantes.CLASSIFICACAO_OWASP_A7);
+
+        vulnerabilidades[0] = vulnerabilidadeTeste;
 
         System.out.println(aplicacaoTeste.toString());
     }
