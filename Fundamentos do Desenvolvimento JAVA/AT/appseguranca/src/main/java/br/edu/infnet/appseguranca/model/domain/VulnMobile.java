@@ -14,7 +14,7 @@ public class VulnMobile extends Vulnerabilidade {
     public VulnMobile(int id, String nome, String descricao, String recomendacao,
             int impacto, int probabilidade, String referencia, String classificacaoOWASPMobile,
             String sistemaOperacionalMobile, String[] pacotesAfetados) throws Exception {
-        super(id, nome, descricao, recomendacao, impacto, probabilidade, referencia);
+        super(id, nome, descricao, recomendacao, impacto, probabilidade, referencia, Constantes.TIPO_VULN_MOBILE);
 
         if (sistemaOperacionalMobile == null || sistemaOperacionalMobile.length() == 0) {
             throw new VulnMobileInvalidaException("Sistema operacional inválido");

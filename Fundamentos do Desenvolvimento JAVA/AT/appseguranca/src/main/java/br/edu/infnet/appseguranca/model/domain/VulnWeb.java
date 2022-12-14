@@ -15,7 +15,7 @@ public class VulnWeb extends Vulnerabilidade {
     public VulnWeb(int id, String nome, String descricao, String recomendacao,
             int impacto, int probabilidade, String referencia,
             String navegador, String[] urlAfetada, boolean redeInterna, String classificacaoOWASP) throws Exception {
-        super(id, nome, descricao, recomendacao, impacto, probabilidade, referencia);
+        super(id, nome, descricao, recomendacao, impacto, probabilidade, referencia, Constantes.TIPO_VULN_WEB);
 
         if (navegador == null || navegador.length() == 0) {
             throw new VulnWebInvalidaException("Navegador inválido, favor usar as constantes da classe Constantes");

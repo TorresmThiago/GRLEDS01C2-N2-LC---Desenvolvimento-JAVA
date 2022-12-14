@@ -11,9 +11,10 @@ public abstract class Vulnerabilidade {
     private int impacto;
     private int probabilidade;
     private String referencia;
+    private String tipo;
 
     public Vulnerabilidade(int id, String nome, String descricao, String recomendacao,
-            int impacto, int probabilidade, String referencia)
+            int impacto, int probabilidade, String referencia, String tipo)
             throws Exception {
 
         if (id < 0) {
@@ -51,6 +52,7 @@ public abstract class Vulnerabilidade {
         this.impacto = impacto;
         this.probabilidade = probabilidade;
         this.referencia = referencia;
+        this.tipo = tipo;
     }
 
     public int getId() {
@@ -107,6 +109,10 @@ public abstract class Vulnerabilidade {
 
     public void setReferencia(String referencia) {
         this.referencia = referencia;
+    }
+
+    public String getTipo() {
+        return tipo;
     }
 
     public abstract String calcularSeveridade()

@@ -13,15 +13,13 @@ public class Aplicacao {
     public Aplicacao() {
     }
 
-    public Aplicacao(Analise analise, int id, String nome, String demanda, String ambiente,
-            String endereco, Vulnerabilidade[] vulnerabilidades) {
+    public Aplicacao(Analise analise, int id, String nome, String demanda, String ambiente, String endereco) {
         this.analise = analise;
         this.id = id;
         this.nome = nome;
         this.demanda = demanda;
         this.ambiente = ambiente;
         this.endereco = endereco;
-        this.vulnerabilidades = vulnerabilidades;
     }
 
     public Analise getAnalise() {
@@ -37,6 +35,9 @@ public class Aplicacao {
     }
 
     public void setId(int id) {
+        if (id < 0) {
+            throw new IllegalArgumentException("Id não pode ser negativo");
+        }
         this.id = id;
     }
 
@@ -45,6 +46,9 @@ public class Aplicacao {
     }
 
     public void setNome(String nome) {
+        if (nome == null || nome.isEmpty()) {
+            throw new IllegalArgumentException("Nome não pode ser nulo ou vazio");
+        }
         this.nome = nome;
     }
 
@@ -53,6 +57,9 @@ public class Aplicacao {
     }
 
     public void setDemanda(String demanda) {
+        if (demanda == null || demanda.isEmpty()) {
+            throw new IllegalArgumentException("Demanda não pode ser nulo ou vazio");
+        }
         this.demanda = demanda;
     }
 
@@ -61,6 +68,9 @@ public class Aplicacao {
     }
 
     public void setAmbiente(String ambiente) {
+        if (ambiente == null || ambiente.isEmpty()) {
+            throw new IllegalArgumentException("Ambiente não pode ser nulo ou vazio");
+        }
         this.ambiente = ambiente;
     }
 
@@ -69,6 +79,9 @@ public class Aplicacao {
     }
 
     public void setEndereco(String endereco) {
+        if (endereco == null || endereco.isEmpty()) {
+            throw new IllegalArgumentException("Endereço não pode ser nulo ou vazio");
+        }
         this.endereco = endereco;
     }
 
@@ -77,6 +90,9 @@ public class Aplicacao {
     }
 
     public void setVulnerabilidades(Vulnerabilidade[] vulnerabilidades) {
+        if (vulnerabilidades == null || vulnerabilidades.length == 0) {
+            throw new IllegalArgumentException("Vulnerabilidades não pode ser nulo ou vazio");
+        }
         this.vulnerabilidades = vulnerabilidades;
     }
 
@@ -89,11 +105,12 @@ public class Aplicacao {
         sb.append(String.format("Demanda = %s; ", demanda));
         sb.append(String.format("Endereco = %s; ", endereco));
         sb.append(String.format("Id = %d; ", id));
-        sb.append("vulnerabilidades= {");
+        sb.append(String.format("Total de vulnerabilidades: %d {\r\n", vulnerabilidades.length));
 
         for (int i = 0; i < vulnerabilidades.length; i++) {
-            sb.append(String.format("%d: %s; ", i + 1, vulnerabilidades[i].getNome()));
-            sb.append(", ");
+            sb.append(String.format("(%s) %d: %s; ", vulnerabilidades[i].getTipo(), i + 1,
+                    vulnerabilidades[i].getNome()));
+            sb.append("\r\n");
         }
 
         sb.append("} ]");

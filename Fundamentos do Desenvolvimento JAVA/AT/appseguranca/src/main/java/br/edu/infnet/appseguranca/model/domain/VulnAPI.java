@@ -15,7 +15,7 @@ public class VulnAPI extends Vulnerabilidade {
     public VulnAPI(int id, String nome, String descricao, String recomendacao,
             int impacto, int probabilidade, String referencia, String classificacaoOWASPAPI,
             String host, String requisicao, String metodo) throws Exception {
-        super(id, nome, descricao, recomendacao, impacto, probabilidade, referencia);
+        super(id, nome, descricao, recomendacao, impacto, probabilidade, referencia, Constantes.TIPO_VULN_API);
 
         if (host == null || host.isEmpty()) {
             throw new VulnAPIInvalidaException("Host inválido");

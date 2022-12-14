@@ -11,6 +11,14 @@ public class Constantes {
     public static final String SEVERIDADE_MEDIA = "Média";
     public static final String SEVERIDADE_BAIXA = "Baixa";
 
+    public final static String TIPO_AMBIENTE_DESENVOLVIMENTO = "Desenvolvimento";
+    public final static String TIPO_AMBIENTE_HOMOLOGACAO = "Homologação";
+    public final static String TIPO_AMBIENTE_PRODUCAO = "Produção";
+
+    public final static String TIPO_VULN_WEB = "Web";
+    public final static String TIPO_VULN_MOBILE = "Mobile";
+    public final static String TIPO_VULN_API = "API";
+
     public final static String NAVEGADOR_CHROME = "Chrome";
     public final static String NAVEGADOR_FIREFOX = "Firefox";
     public final static String NAVEGADOR_EDGE = "Edge";
@@ -22,6 +30,9 @@ public class Constantes {
     public final static String SISTEMA_OPERACIONAL_MOBILE_IOS = "iOS";
     public final static String SISTEMA_OPERACIONAL_MOBILE_WINDOWS = "Windows";
     public final static String SISTEMA_OPERACIONAL_MOBILE_OUTROS = "Outros";
+
+    public static final String[] METODOS_HTTP = { "GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS",
+            "TRACE", "CONNECT" };
 
     public final static String CLASSIFICACAO_OWASP_A1 = "A1 - Falha no controle de acesso";
     public final static String CLASSIFICACAO_OWASP_A2 = "A2 - Falhas criptográficas";
@@ -61,8 +72,5 @@ public class Constantes {
     public final static String CLASSIFICACAO_OWASP_API_A10 = "A10 - Log e monitoramento insuficientes";
     public final static String[] CLASSIFICACAO_OWASP_API_CRITICA = { CLASSIFICACAO_OWASP_API_A1,
             CLASSIFICACAO_OWASP_API_A2, CLASSIFICACAO_OWASP_API_A3 };
-
-    public static final String[] METODOS_HTTP = { "GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS",
-            "TRACE", "CONNECT" };
 
 }

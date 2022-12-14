@@ -13,16 +13,12 @@ public class Analise {
     private String dataFim;
     private String status;
 
-    public Analise() {
-    }
-
-    public Analise(int id, String titulo, String descricao, String cliente, Aplicacao aplicacao, String atividade,
+    public Analise(int id, String titulo, String descricao, String cliente, String atividade,
             int qtdHoras, String dataInicio, String dataFim, String status) {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
         this.cliente = cliente;
-        this.aplicacao = aplicacao;
         this.atividade = atividade;
         this.qtdHoras = qtdHoras;
         this.dataInicio = dataInicio;
