@@ -1,14 +1,16 @@
 package br.edu.infnet.appseguranca.model.domain;
 
+import java.util.List;
+
 public class Aplicacao {
 
-    Analise analise;
+    private Analise analise;
     private int id;
     private String nome;
     private String demanda;
     private String ambiente;
     private String endereco;
-    private Vulnerabilidade[] vulnerabilidades;
+    private List<Vulnerabilidade> vulnerabilidades;
 
     public Aplicacao() {
     }
@@ -85,12 +87,12 @@ public class Aplicacao {
         this.endereco = endereco;
     }
 
-    public Vulnerabilidade[] getVulnerabilidades() {
+    public List<Vulnerabilidade> getVulnerabilidades() {
         return vulnerabilidades;
     }
 
-    public void setVulnerabilidades(Vulnerabilidade[] vulnerabilidades) {
-        if (vulnerabilidades == null || vulnerabilidades.length == 0) {
+    public void setVulnerabilidades(List<Vulnerabilidade> vulnerabilidades) {
+        if (vulnerabilidades == null || vulnerabilidades.size() == 0) {
             throw new IllegalArgumentException("Vulnerabilidades não pode ser nulo ou vazio");
         }
         this.vulnerabilidades = vulnerabilidades;
@@ -105,11 +107,11 @@ public class Aplicacao {
         sb.append(String.format("Demanda = %s; ", demanda));
         sb.append(String.format("Endereco = %s; ", endereco));
         sb.append(String.format("Id = %d; ", id));
-        sb.append(String.format("Total de vulnerabilidades: %d {\r\n", vulnerabilidades.length));
+        sb.append(String.format("Total de vulnerabilidades: %d {\r\n", vulnerabilidades.size()));
 
-        for (int i = 0; i < vulnerabilidades.length; i++) {
-            sb.append(String.format("(%s) %d: %s; ", vulnerabilidades[i].getTipo(), i + 1,
-                    vulnerabilidades[i].getNome()));
+        for (int i = 0; i < vulnerabilidades.size(); i++) {
+            sb.append(String.format("(%s) %d: %s; ", vulnerabilidades.get(i).getTipo(), i + 1,
+                    vulnerabilidades.get(i).getNome()));
             sb.append("\r\n");
         }
 

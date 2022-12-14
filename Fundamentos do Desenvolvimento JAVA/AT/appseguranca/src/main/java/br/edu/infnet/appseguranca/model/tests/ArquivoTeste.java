@@ -104,10 +104,7 @@ public class ArquivoTeste {
             }
 
             analise.setAplicacao(aplicacao);
-
-            Vulnerabilidade[] vulns = new Vulnerabilidade[vulnerabilidades.size()];
-            vulns = vulnerabilidades.toArray(vulns);
-            aplicacao.setVulnerabilidades(vulns);
+            aplicacao.setVulnerabilidades(vulnerabilidades);
 
             escrita.write(analise.obterLinha());
 

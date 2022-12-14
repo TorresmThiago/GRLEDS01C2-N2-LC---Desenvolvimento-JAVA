@@ -3,6 +3,9 @@ package br.edu.infnet.appseguranca.model.tests;
 import br.edu.infnet.appseguranca.model.domain.*;
 import br.edu.infnet.appseguranca.model.exceptions.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.edu.infnet.appseguranca.model.auxiliar.Constantes;
 
 public class AplicacaoTest {
@@ -15,7 +18,7 @@ public class AplicacaoTest {
         Aplicacao aplicacaoTeste = new Aplicacao(analiseTeste, 1, "Aplicação de Teste", "Teste do método .toString()",
                 Constantes.TIPO_AMBIENTE_DESENVOLVIMENTO, "http://localhost:8080");
 
-        Vulnerabilidade[] vulnerabilidades = new Vulnerabilidade[3];
+        List<Vulnerabilidade> vulnerabilidades = new ArrayList<Vulnerabilidade>();
 
         analiseTeste.setAplicacao(aplicacaoTeste);
         aplicacaoTeste.setVulnerabilidades(vulnerabilidades);
@@ -38,7 +41,7 @@ public class AplicacaoTest {
             System.out.println(e.getMessage());
         }
 
-        vulnerabilidades[0] = vulnWeb;
+        vulnerabilidades.add(vulnWeb);
 
         //
         // Vulnerabilidade Mobile
@@ -60,7 +63,7 @@ public class AplicacaoTest {
             System.out.println(e.getMessage());
         }
 
-        vulnerabilidades[1] = vulnMobile;
+        vulnerabilidades.add(vulnMobile);
 
         //
         // Vulnerabilidade API
@@ -82,7 +85,7 @@ public class AplicacaoTest {
             System.out.println(e.getMessage());
         }
 
-        vulnerabilidades[2] = vulnAPI;
+        vulnerabilidades.add(vulnAPI);
 
         System.out.println(aplicacaoTeste.toString());
     }
