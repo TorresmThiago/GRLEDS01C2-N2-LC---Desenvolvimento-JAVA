@@ -25,6 +25,9 @@ public class VulnAPITest {
 
         System.out.println(vulnAPI.toString());
 
+        String severidadeVuln = vulnAPI.calcularSeveridade();
+        System.out.println("Severidade da vulnerabilidade: " + severidadeVuln);
+
     }
 
 }

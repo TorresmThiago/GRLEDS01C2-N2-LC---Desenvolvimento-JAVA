@@ -24,6 +24,9 @@ public class VulnMobileTest {
 
         System.out.println(vulnMobile.toString());
 
+        String severidadeVuln = vulnMobile.calcularSeveridade();
+        System.out.println("Severidade da vulnerabilidade: " + severidadeVuln);
+
     }
 
 }

@@ -22,6 +22,9 @@ public class VulnWebTest {
         vulnWeb.setClassificacaoOWASP(Constantes.CLASSIFICACAO_OWASP_A2);
 
         System.out.println(vulnWeb.toString());
+
+        String severidadeVuln = vulnWeb.calcularSeveridade();
+        System.out.println("Severidade da vulnerabilidade: " + severidadeVuln);
     }
 
 }
