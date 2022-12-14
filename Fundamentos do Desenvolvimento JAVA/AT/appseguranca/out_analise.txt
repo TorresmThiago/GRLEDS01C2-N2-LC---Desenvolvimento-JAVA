@@ -1,0 +1,1 @@
+Analise 1: Análise de Teste;Aplicacao 123: Aplicação de Teste; Numero de vulnerabilidades: 6; Status da analise: Em andamento

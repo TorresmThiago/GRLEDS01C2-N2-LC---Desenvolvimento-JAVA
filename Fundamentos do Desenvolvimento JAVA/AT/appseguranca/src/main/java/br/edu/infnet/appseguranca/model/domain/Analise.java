@@ -122,4 +122,16 @@ public class Analise {
         return sb.toString();
     }
 
+    public String obterLinha() {
+        // No arquivo gerado precisamos ter um atributo da classe principal, um atributo
+        // da classe de associação, a quantidade de objetos da classe mãe.
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("Analise %d: %s;", id, titulo));
+        sb.append(String.format("Aplicacao %d: %s; ", aplicacao.getId(), aplicacao.getNome()));
+        sb.append(String.format("Numero de vulnerabilidades: %d; ", aplicacao.getVulnerabilidades().length));
+        sb.append(String.format("Status da analise: %s", status));
+        return sb.toString();
+
+    }
+
 }
