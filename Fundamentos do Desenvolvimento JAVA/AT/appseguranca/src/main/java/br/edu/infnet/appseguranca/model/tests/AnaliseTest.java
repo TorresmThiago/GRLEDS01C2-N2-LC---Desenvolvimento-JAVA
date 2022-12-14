@@ -38,8 +38,6 @@ public class AnaliseTest {
                 "Identificamos o vazamento de informações sensíveis na aplicação, tais como endereços internos de rede, senhas, etc.");
         vulnerabilidades[0].setRecomendacao(
                 "Qualquer informação sensível, seja endereços IP's, nomes de máquina ou qualquer outra informação que não seja relevante para o aplicativo devem ser retiradas");
-        vulnerabilidades[0].setAtaque("Fingerprinting");
-        vulnerabilidades[0].setCategoria(" Information Leakage");
         vulnerabilidades[0].setImpacto(1);
         vulnerabilidades[0].setProbabilidade(2);
         vulnerabilidades[0].setNavegador("Chrome");

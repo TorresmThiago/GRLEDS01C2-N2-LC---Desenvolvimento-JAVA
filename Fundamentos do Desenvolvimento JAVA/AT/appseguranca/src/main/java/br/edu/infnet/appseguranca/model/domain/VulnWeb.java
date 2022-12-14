@@ -11,10 +11,10 @@ public class VulnWeb extends Vulnerabilidade {
         super();
     }
 
-    public VulnWeb(int id, String nome, String descricao, String recomendacao, String ataque, String categoria,
+    public VulnWeb(int id, String nome, String descricao, String recomendacao,
             int impacto, int probabilidade, String referencia,
             String navegador, String[] urlAfetada, boolean redeInterna, String classificacaoOWASP) {
-        super(id, nome, descricao, recomendacao, ataque, categoria, impacto, probabilidade, referencia);
+        super(id, nome, descricao, recomendacao, impacto, probabilidade, referencia);
         this.navegador = navegador;
         this.urlAfetada = urlAfetada;
         this.redeInterna = redeInterna;
@@ -57,7 +57,7 @@ public class VulnWeb extends Vulnerabilidade {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("Vulnabilidade Web (%d) %s [", this.getId(), this.getNome()));
-        sb.append(String.format("Severidade: %s; ", this.getSeveridade()));
+        sb.append(String.format("Severidade: %s; ", this.calcularSeveridade()));
         sb.append(String.format("Navegador: %s; ", this.getNavegador()));
         sb.append("URL afetada: { ");
 
@@ -77,7 +77,7 @@ public class VulnWeb extends Vulnerabilidade {
     }
 
     @Override
-    public String getSeveridade() {
+    public String calcularSeveridade() {
         int severidade = this.getImpacto() * this.getProbabilidade();
         if (severidade <= 3) {
             return "Baixa";

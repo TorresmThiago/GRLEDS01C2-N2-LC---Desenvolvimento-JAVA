@@ -4,6 +4,10 @@ import br.edu.infnet.appseguranca.model.domain.Analise;
 import br.edu.infnet.appseguranca.model.domain.Aplicacao;
 import br.edu.infnet.appseguranca.model.domain.VulnWeb;
 
+import org.apache.tomcat.util.bcel.Const;
+
+import br.edu.infnet.appseguranca.model.auxiliar.Constantes;
+
 public class AplicacaoTest {
 
     public static void main(String[] args) {
@@ -38,14 +42,12 @@ public class AplicacaoTest {
                 "Identificamos o vazamento de informações sensíveis na aplicação, tais como endereços internos de rede, senhas, etc.");
         vulnerabilidades[0].setRecomendacao(
                 "Qualquer informação sensível, seja endereços IP's, nomes de máquina ou qualquer outra informação que não seja relevante para o aplicativo devem ser retiradas");
-        vulnerabilidades[0].setAtaque("Fingerprinting");
-        vulnerabilidades[0].setCategoria(" Information Leakage");
         vulnerabilidades[0].setImpacto(1);
         vulnerabilidades[0].setProbabilidade(2);
-        vulnerabilidades[0].setNavegador("Chrome");
+        vulnerabilidades[0].setNavegador(Constantes.NAVEGADOR_CHROME);
         vulnerabilidades[0].setUrlAfetada(new String[] { "http://localhost:8080/index" });
         vulnerabilidades[0].setRedeInterna(true);
-        vulnerabilidades[0].setClassificacaoOWASP("A3:2017-Sensitive Data Exposure");
+        vulnerabilidades[0].setClassificacaoOWASP(Constantes.CLASSIFICACAO_OWASP_A3);
 
         System.out.println(aplicacaoTeste.toString());
     }

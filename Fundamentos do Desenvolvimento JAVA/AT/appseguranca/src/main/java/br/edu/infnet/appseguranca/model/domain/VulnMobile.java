@@ -10,10 +10,10 @@ public class VulnMobile extends Vulnerabilidade {
         super();
     }
 
-    public VulnMobile(int id, String nome, String descricao, String recomendacao, String ataque, String categoria,
+    public VulnMobile(int id, String nome, String descricao, String recomendacao,
             int impacto, int probabilidade, String referencia, String classificacaoOWASPMobile,
             String sistemaOperacionalMobile, String[] pacotesAfetados) {
-        super(id, nome, descricao, recomendacao, ataque, categoria, impacto, probabilidade, referencia);
+        super(id, nome, descricao, recomendacao, impacto, probabilidade, referencia);
         this.sistemaOperacionalMobile = sistemaOperacionalMobile;
         this.classificacaoOWASPMobile = classificacaoOWASPMobile;
         this.pacotesAfetados = pacotesAfetados;
@@ -47,7 +47,7 @@ public class VulnMobile extends Vulnerabilidade {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("Vulnabilidade Mobile (%d) %s [", this.getId(), this.getNome()));
-        sb.append(String.format("Severidade: %s; ", this.getSeveridade()));
+        sb.append(String.format("Severidade: %s; ", this.calcularSeveridade()));
         sb.append(String.format("SO: %s; ", this.getSistemaOperacionalMobile()));
         sb.append("Pacotes afetados: { ");
 
@@ -66,7 +66,7 @@ public class VulnMobile extends Vulnerabilidade {
     }
 
     @Override
-    public String getSeveridade() {
+    public String calcularSeveridade() {
         int severidade = this.getImpacto() * this.getProbabilidade();
         if (severidade <= 3) {
             return "Baixa";
