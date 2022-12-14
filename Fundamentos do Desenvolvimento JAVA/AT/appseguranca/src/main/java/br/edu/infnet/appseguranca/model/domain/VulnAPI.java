@@ -35,8 +35,8 @@ public class VulnAPI extends Vulnerabilidade {
 
         try {
 
-            if (Integer.parseInt(classificacaoOWASPAPI.substring(1, 2)) <= 0
-                    || Integer.parseInt(classificacaoOWASPAPI.substring(1, 2)) >= 11) {
+            if (Integer.parseInt(classificacaoOWASPAPI.substring(1, 2)) < 1
+                    || Integer.parseInt(classificacaoOWASPAPI.substring(1, 2)) > 10) {
                 throw new VulnAPIInvalidaException(
                         "Classificação OWASP API inválida. Favor usar as constantes da classe Constantes");
             }

@@ -31,8 +31,8 @@ public class VulnWeb extends Vulnerabilidade {
 
         try {
 
-            if (Integer.parseInt(classificacaoOWASP.substring(1, 2)) <= 0
-                    || Integer.parseInt(classificacaoOWASP.substring(1, 2)) >= 11) {
+            if (Integer.parseInt(classificacaoOWASP.substring(1, 2)) < 1
+                    || Integer.parseInt(classificacaoOWASP.substring(1, 2)) > 10) {
                 throw new VulnWebInvalidaException(
                         "Classificação OWASP inválida. Favor usar as constantes da classe Constantes");
             }
