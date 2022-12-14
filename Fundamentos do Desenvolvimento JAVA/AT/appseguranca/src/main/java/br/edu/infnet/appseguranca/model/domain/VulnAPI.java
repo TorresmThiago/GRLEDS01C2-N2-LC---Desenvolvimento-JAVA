@@ -5,6 +5,9 @@ import java.util.Arrays;
 import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
 
 import br.edu.infnet.appseguranca.model.auxiliar.Constantes;
+import br.edu.infnet.appseguranca.model.exceptions.VulnAPIInvalidaException;
+import br.edu.infnet.appseguranca.model.exceptions.VulnMobileInvalidaException;
+import br.edu.infnet.appseguranca.model.exceptions.VulnWebInvalidaException;
 
 public class VulnAPI extends Vulnerabilidade {
 
@@ -13,18 +16,42 @@ public class VulnAPI extends Vulnerabilidade {
     private String metodo;
     private String classificacaoOWASPAPI;
 
-    public VulnAPI() {
-        super();
-    }
-
     public VulnAPI(int id, String nome, String descricao, String recomendacao,
             int impacto, int probabilidade, String referencia, String classificacaoOWASPAPI,
-            String host, String requisicao, String metodo) {
+            String host, String requisicao, String metodo) throws Exception {
         super(id, nome, descricao, recomendacao, impacto, probabilidade, referencia);
-        this.host = host;
-        this.requisicao = requisicao;
-        this.metodo = metodo;
-        this.classificacaoOWASPAPI = classificacaoOWASPAPI;
+
+        if (host == null || host.isEmpty()) {
+            throw new VulnAPIInvalidaException("Host inválido");
+        }
+
+        if (requisicao == null || requisicao.isEmpty()) {
+            throw new VulnAPIInvalidaException("Requisição inválida");
+        }
+
+        if (metodo == null || metodo.isEmpty() || !Arrays.asList(Constantes.METODOS_HTTP).contains(metodo)) {
+            throw new VulnAPIInvalidaException("Método HTTP inválido");
+        }
+
+        if (classificacaoOWASPAPI == null || classificacaoOWASPAPI.isEmpty()) {
+            throw new VulnAPIInvalidaException("Classificação OWASP API inválida");
+        }
+
+        try {
+
+            if (Integer.parseInt(classificacaoOWASPAPI.substring(1, 2)) <= 0
+                    || Integer.parseInt(classificacaoOWASPAPI.substring(1, 2)) >= 11) {
+                throw new VulnAPIInvalidaException(
+                        "Classificação OWASP API inválida. Favor usar as constantes da classe Constantes");
+            }
+
+            this.host = host;
+            this.requisicao = requisicao;
+            this.metodo = metodo;
+            this.classificacaoOWASPAPI = classificacaoOWASPAPI;
+        } catch (NumberFormatException e) {
+            throw new VulnAPIInvalidaException("Valores designados para a vulnerabilidade não são do tipo esperado");
+        }
     }
 
     public String getHost() {

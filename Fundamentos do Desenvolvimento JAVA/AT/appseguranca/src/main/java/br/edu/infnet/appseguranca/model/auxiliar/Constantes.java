@@ -62,4 +62,7 @@ public class Constantes {
     public final static String[] CLASSIFICACAO_OWASP_API_CRITICA = { CLASSIFICACAO_OWASP_API_A1,
             CLASSIFICACAO_OWASP_API_A2, CLASSIFICACAO_OWASP_API_A3 };
 
+    public static final String[] METODOS_HTTP = { "GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS",
+            "TRACE", "CONNECT" };
+
 }

@@ -1,5 +1,7 @@
 package br.edu.infnet.appseguranca.model.domain;
 
+import br.edu.infnet.appseguranca.model.exceptions.*;
+
 public abstract class Vulnerabilidade {
 
     private int id;
@@ -10,11 +12,38 @@ public abstract class Vulnerabilidade {
     private int probabilidade;
     private String referencia;
 
-    public Vulnerabilidade() {
-    }
-
     public Vulnerabilidade(int id, String nome, String descricao, String recomendacao,
-            int impacto, int probabilidade, String referencia) {
+            int impacto, int probabilidade, String referencia)
+            throws Exception {
+
+        if (id < 0) {
+            throw new VulnerabilidadeInvalidaException("ID inválido");
+        }
+
+        if (nome == null || nome.length() == 0) {
+            throw new VulnerabilidadeInvalidaException("Nome inválido");
+        }
+
+        if (descricao == null || descricao.length() == 0) {
+            throw new VulnerabilidadeInvalidaException("Descrição inválida");
+        }
+
+        if (recomendacao == null || recomendacao.length() == 0) {
+            throw new VulnerabilidadeInvalidaException("Recomendação inválida");
+        }
+
+        if (impacto < 0 || impacto > 3) {
+            throw new VulnerabilidadeInvalidaException("Impacto inválido");
+        }
+
+        if (probabilidade < 0 || probabilidade > 3) {
+            throw new VulnerabilidadeInvalidaException("Probabilidade inválida");
+        }
+
+        if (referencia == null || referencia.length() == 0) {
+            throw new VulnerabilidadeInvalidaException("Referência inválida");
+        }
+
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -80,7 +109,8 @@ public abstract class Vulnerabilidade {
         this.referencia = referencia;
     }
 
-    public abstract String calcularSeveridade();
+    public abstract String calcularSeveridade()
+            throws Exception;
 
     @Override
     public String toString() {
