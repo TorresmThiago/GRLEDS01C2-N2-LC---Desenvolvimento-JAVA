@@ -92,9 +92,6 @@ public class Aplicacao {
     }
 
     public void setVulnerabilidades(List<Vulnerabilidade> vulnerabilidades) {
-        if (vulnerabilidades == null || vulnerabilidades.size() == 0) {
-            throw new IllegalArgumentException("Vulnerabilidades não pode ser nulo ou vazio");
-        }
         this.vulnerabilidades = vulnerabilidades;
     }
 
