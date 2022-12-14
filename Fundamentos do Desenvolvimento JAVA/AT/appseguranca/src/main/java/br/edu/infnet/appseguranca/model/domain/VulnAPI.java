@@ -2,6 +2,8 @@ package br.edu.infnet.appseguranca.model.domain;
 
 import java.util.Arrays;
 
+import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
+
 import br.edu.infnet.appseguranca.model.auxiliar.Constantes;
 
 public class VulnAPI extends Vulnerabilidade {
@@ -10,6 +12,10 @@ public class VulnAPI extends Vulnerabilidade {
     private String requisicao;
     private String metodo;
     private String classificacaoOWASPAPI;
+
+    public VulnAPI() {
+        super();
+    }
 
     public VulnAPI(int id, String nome, String descricao, String recomendacao,
             int impacto, int probabilidade, String referencia, String classificacaoOWASPAPI,
@@ -73,13 +79,15 @@ public class VulnAPI extends Vulnerabilidade {
 
         if ((severidade == 1)
                 && (Arrays.asList(Constantes.CLASSIFICACAO_OWASP_API_CRITICA).contains(classificacao))) {
-            return "Crítica";
-        } else if (severidade <= 1) {
-            return "Alta";
-        } else if (severidade <= 3) {
-            return "Média";
+            return Constantes.SEVERIDADE_CRITICA;
+        } else if (severidade <= 2) {
+            return Constantes.SEVERIDADE_ALTA;
+        } else if (severidade <= 4) {
+            return Constantes.SEVERIDADE_MEDIA;
+        } else if (severidade <= 6) {
+            return Constantes.SEVERIDADE_BAIXA;
+        } else {
+            throw new IllegalArgumentException("Severidade inválida");
         }
-
-        return "Baixa";
     }
 }

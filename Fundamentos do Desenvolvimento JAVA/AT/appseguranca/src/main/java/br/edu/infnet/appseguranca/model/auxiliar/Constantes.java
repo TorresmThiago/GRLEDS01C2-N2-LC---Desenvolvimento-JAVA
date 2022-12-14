@@ -2,10 +2,14 @@ package br.edu.infnet.appseguranca.model.auxiliar;
 
 public class Constantes {
 
-    public final static int SEVERIDADE_BAIXA = 1;
-    public final static int SEVERIDADE_MEDIA = 2;
-    public final static int SEVERIDADE_ALTA = 3;
-    public final static int SEVERIDADE_CRITICA = 4;
+    public final static int RISCO_ALTA = 1;
+    public final static int RISCO_MEDIA = 2;
+    public final static int RISCO_BAIXA = 3;
+
+    public static final String SEVERIDADE_CRITICA = "Crítica";
+    public static final String SEVERIDADE_ALTA = "Alta";
+    public static final String SEVERIDADE_MEDIA = "Média";
+    public static final String SEVERIDADE_BAIXA = "Baixa";
 
     public final static String NAVEGADOR_CHROME = "Chrome";
     public final static String NAVEGADOR_FIREFOX = "Firefox";
