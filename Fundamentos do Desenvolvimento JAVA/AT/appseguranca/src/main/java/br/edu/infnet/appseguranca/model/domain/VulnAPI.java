@@ -33,21 +33,16 @@ public class VulnAPI extends Vulnerabilidade {
             throw new VulnAPIInvalidaException("Classificação OWASP API inválida");
         }
 
-        try {
-
-            if (Integer.parseInt(classificacaoOWASPAPI.substring(1, 2)) < 1
-                    || Integer.parseInt(classificacaoOWASPAPI.substring(1, 2)) > 10) {
-                throw new VulnAPIInvalidaException(
-                        "Classificação OWASP API inválida. Favor usar as constantes da classe Constantes");
-            }
-
-            this.host = host;
-            this.requisicao = requisicao;
-            this.metodo = metodo;
-            this.classificacaoOWASPAPI = classificacaoOWASPAPI;
-        } catch (NumberFormatException e) {
-            throw new VulnAPIInvalidaException("Valores designados para a vulnerabilidade não são do tipo esperado");
+        if (Integer.parseInt(classificacaoOWASPAPI.substring(1, 2)) < 1
+                || Integer.parseInt(classificacaoOWASPAPI.substring(1, 2)) > 10) {
+            throw new VulnAPIInvalidaException(
+                    "Classificação OWASP API inválida. Favor usar as constantes da classe Constantes");
         }
+
+        this.host = host;
+        this.requisicao = requisicao;
+        this.metodo = metodo;
+        this.classificacaoOWASPAPI = classificacaoOWASPAPI;
     }
 
     public String getHost() {

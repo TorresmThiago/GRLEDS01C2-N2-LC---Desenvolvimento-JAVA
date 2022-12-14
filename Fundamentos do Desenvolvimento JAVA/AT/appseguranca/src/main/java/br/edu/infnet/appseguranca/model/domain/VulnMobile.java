@@ -34,20 +34,15 @@ public class VulnMobile extends Vulnerabilidade {
             }
         }
 
-        try {
-
-            if (Integer.parseInt(classificacaoOWASPMobile.substring(1, 2)) < 1
-                    || Integer.parseInt(classificacaoOWASPMobile.substring(1, 2)) > 10) {
-                throw new VulnMobileInvalidaException(
-                        "Classificação OWASP API inválida. Favor usar as constantes da classe Constantes");
-            }
-
-            this.sistemaOperacionalMobile = sistemaOperacionalMobile;
-            this.classificacaoOWASPMobile = classificacaoOWASPMobile;
-            this.pacotesAfetados = pacotesAfetados;
-        } catch (Exception e) {
-            throw new VulnMobileInvalidaException("Valores designados para a vulnerabilidade não são do tipo esperado");
+        if (Integer.parseInt(classificacaoOWASPMobile.substring(1, 2)) < 1
+                || Integer.parseInt(classificacaoOWASPMobile.substring(1, 2)) > 10) {
+            throw new VulnMobileInvalidaException(
+                    "Classificação OWASP API inválida. Favor usar as constantes da classe Constantes");
         }
+
+        this.sistemaOperacionalMobile = sistemaOperacionalMobile;
+        this.classificacaoOWASPMobile = classificacaoOWASPMobile;
+        this.pacotesAfetados = pacotesAfetados;
     }
 
     public String getSistemaOperacionalMobile() {

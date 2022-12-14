@@ -29,22 +29,16 @@ public class VulnWeb extends Vulnerabilidade {
             throw new VulnWebInvalidaException("Classificação OWASP inválida");
         }
 
-        try {
-
-            if (Integer.parseInt(classificacaoOWASP.substring(1, 2)) < 1
-                    || Integer.parseInt(classificacaoOWASP.substring(1, 2)) > 10) {
-                throw new VulnWebInvalidaException(
-                        "Classificação OWASP inválida. Favor usar as constantes da classe Constantes");
-            }
-
-            this.navegador = navegador;
-            this.urlAfetada = urlAfetada;
-            this.redeInterna = redeInterna;
-            this.classificacaoOWASP = classificacaoOWASP;
-        } catch (VulnWebInvalidaException e) {
-            throw new VulnWebInvalidaException("Valores designados para a vulnerabilidade não são do tipo esperado");
+        if (Integer.parseInt(classificacaoOWASP.substring(1, 2)) < 1
+                || Integer.parseInt(classificacaoOWASP.substring(1, 2)) > 10) {
+            throw new VulnWebInvalidaException(
+                    "Classificação OWASP inválida. Favor usar as constantes da classe Constantes");
         }
 
+        this.navegador = navegador;
+        this.urlAfetada = urlAfetada;
+        this.redeInterna = redeInterna;
+        this.classificacaoOWASP = classificacaoOWASP;
     }
 
     public String getNavegador() {
