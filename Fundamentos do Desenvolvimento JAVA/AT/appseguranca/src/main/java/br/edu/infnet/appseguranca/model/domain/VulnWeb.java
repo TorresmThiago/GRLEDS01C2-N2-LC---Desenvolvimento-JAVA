@@ -3,6 +3,7 @@ package br.edu.infnet.appseguranca.model.domain;
 import java.util.Arrays;
 
 import br.edu.infnet.appseguranca.model.auxiliar.Constantes;
+import br.edu.infnet.appseguranca.model.exceptions.VulnWebInvalidaException;
 
 public class VulnWeb extends Vulnerabilidade {
 
@@ -11,18 +12,39 @@ public class VulnWeb extends Vulnerabilidade {
     private boolean redeInterna;
     private String classificacaoOWASP;
 
-    public VulnWeb() {
-        super();
-    }
-
     public VulnWeb(int id, String nome, String descricao, String recomendacao,
             int impacto, int probabilidade, String referencia,
-            String navegador, String[] urlAfetada, boolean redeInterna, String classificacaoOWASP) {
+            String navegador, String[] urlAfetada, boolean redeInterna, String classificacaoOWASP) throws Exception {
         super(id, nome, descricao, recomendacao, impacto, probabilidade, referencia);
-        this.navegador = navegador;
-        this.urlAfetada = urlAfetada;
-        this.redeInterna = redeInterna;
-        this.classificacaoOWASP = classificacaoOWASP;
+
+        if (navegador == null || navegador.length() == 0) {
+            throw new VulnWebInvalidaException("Navegador inválido, favor usar as constantes da classe Constantes");
+        }
+
+        if (urlAfetada == null || urlAfetada.length == 0) {
+            throw new VulnWebInvalidaException("URL afetada inválida");
+        }
+
+        if (classificacaoOWASP == null || classificacaoOWASP.length() == 0) {
+            throw new VulnWebInvalidaException("Classificação OWASP inválida");
+        }
+
+        try {
+
+            if (Integer.parseInt(classificacaoOWASP.substring(1, 2)) <= 0
+                    || Integer.parseInt(classificacaoOWASP.substring(1, 2)) >= 11) {
+                throw new VulnWebInvalidaException(
+                        "Classificação OWASP inválida. Favor usar as constantes da classe Constantes");
+            }
+
+            this.navegador = navegador;
+            this.urlAfetada = urlAfetada;
+            this.redeInterna = redeInterna;
+            this.classificacaoOWASP = classificacaoOWASP;
+        } catch (VulnWebInvalidaException e) {
+            throw new VulnWebInvalidaException("Valores designados para a vulnerabilidade não são do tipo esperado");
+        }
+
     }
 
     public String getNavegador() {
@@ -61,7 +83,13 @@ public class VulnWeb extends Vulnerabilidade {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("Vulnabilidade Web (%d) %s [", this.getId(), this.getNome()));
-        sb.append(String.format("Severidade: %s; ", this.calcularSeveridade()));
+
+        try {
+            sb.append(String.format("Severidade: %s; ", this.calcularSeveridade()));
+        } catch (VulnWebInvalidaException e) {
+            sb.append(String.format("Severidade: %s;", e.getMessage()));
+        }
+
         sb.append(String.format("Navegador: %s; ", this.getNavegador()));
         sb.append("URL afetada: { ");
 
@@ -81,21 +109,25 @@ public class VulnWeb extends Vulnerabilidade {
     }
 
     @Override
-    public String calcularSeveridade() {
-        int severidade = this.getImpacto() * this.getProbabilidade();
-        String classificacao = this.getClassificacaoOWASP();
+    public String calcularSeveridade() throws VulnWebInvalidaException {
+        try {
+            int severidade = this.getImpacto() * this.getProbabilidade();
+            String classificacao = this.getClassificacaoOWASP();
 
-        if ((severidade == 1)
-                && (Arrays.asList(Constantes.CLASSIFICACAO_OWASP_CRITICA).contains(classificacao))) {
-            return Constantes.SEVERIDADE_CRITICA;
-        } else if (severidade <= 2) {
-            return Constantes.SEVERIDADE_ALTA;
-        } else if (severidade <= 4) {
-            return Constantes.SEVERIDADE_MEDIA;
-        } else if (severidade <= 6) {
-            return Constantes.SEVERIDADE_BAIXA;
-        } else {
-            throw new IllegalArgumentException("Severidade inválida");
+            if ((severidade == 1)
+                    && (Arrays.asList(Constantes.CLASSIFICACAO_OWASP_CRITICA).contains(classificacao))) {
+                return Constantes.SEVERIDADE_CRITICA;
+            } else if (severidade <= 2) {
+                return Constantes.SEVERIDADE_ALTA;
+            } else if (severidade <= 4) {
+                return Constantes.SEVERIDADE_MEDIA;
+            } else if (severidade <= 6) {
+                return Constantes.SEVERIDADE_BAIXA;
+            } else {
+                throw new VulnWebInvalidaException("Valores de impacto e probabilidade inválidos");
+            }
+        } catch (VulnWebInvalidaException e) {
+            throw new VulnWebInvalidaException("Erro ao tentar calcular a severidade da vulnerabilidade");
         }
     }
 }

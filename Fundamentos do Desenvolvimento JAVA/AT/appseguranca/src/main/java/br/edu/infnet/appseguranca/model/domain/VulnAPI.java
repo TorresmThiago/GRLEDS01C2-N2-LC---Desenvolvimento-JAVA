@@ -2,12 +2,8 @@ package br.edu.infnet.appseguranca.model.domain;
 
 import java.util.Arrays;
 
-import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
-
 import br.edu.infnet.appseguranca.model.auxiliar.Constantes;
 import br.edu.infnet.appseguranca.model.exceptions.VulnAPIInvalidaException;
-import br.edu.infnet.appseguranca.model.exceptions.VulnMobileInvalidaException;
-import br.edu.infnet.appseguranca.model.exceptions.VulnWebInvalidaException;
 
 public class VulnAPI extends Vulnerabilidade {
 
@@ -90,7 +86,13 @@ public class VulnAPI extends Vulnerabilidade {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("Vulnabilidade API (%d) %s [", this.getId(), this.getNome()));
-        sb.append(String.format("Severidade: %s; ", this.calcularSeveridade()));
+
+        try {
+            sb.append(String.format("Severidade: %s; ", this.calcularSeveridade()));
+        } catch (VulnAPIInvalidaException e) {
+            sb.append(String.format("Severidade: %s;", e.getMessage()));
+        }
+
         sb.append(String.format("Host: %s; ", this.getHost()));
         sb.append(String.format("Requisição: %s; ", this.getRequisicao()));
         sb.append(String.format("Método: %s; ", this.getMetodo()));
@@ -100,21 +102,25 @@ public class VulnAPI extends Vulnerabilidade {
     }
 
     @Override
-    public String calcularSeveridade() {
-        int severidade = this.getImpacto() * this.getProbabilidade();
-        String classificacao = this.getClassificacaoOWASPAPI();
+    public String calcularSeveridade() throws VulnAPIInvalidaException {
+        try {
+            int severidade = this.getImpacto() * this.getProbabilidade();
+            String classificacao = this.getClassificacaoOWASPAPI();
 
-        if ((severidade == 1)
-                && (Arrays.asList(Constantes.CLASSIFICACAO_OWASP_API_CRITICA).contains(classificacao))) {
-            return Constantes.SEVERIDADE_CRITICA;
-        } else if (severidade <= 2) {
-            return Constantes.SEVERIDADE_ALTA;
-        } else if (severidade <= 4) {
-            return Constantes.SEVERIDADE_MEDIA;
-        } else if (severidade <= 6) {
-            return Constantes.SEVERIDADE_BAIXA;
-        } else {
-            throw new IllegalArgumentException("Severidade inválida");
+            if ((severidade == 1)
+                    && (Arrays.asList(Constantes.CLASSIFICACAO_OWASP_API_CRITICA).contains(classificacao))) {
+                return Constantes.SEVERIDADE_CRITICA;
+            } else if (severidade <= 2) {
+                return Constantes.SEVERIDADE_ALTA;
+            } else if (severidade <= 4) {
+                return Constantes.SEVERIDADE_MEDIA;
+            } else if (severidade <= 6) {
+                return Constantes.SEVERIDADE_BAIXA;
+            } else {
+                throw new VulnAPIInvalidaException("Valores de impacto e probabilidade inválidos");
+            }
+        } catch (VulnAPIInvalidaException e) {
+            throw new VulnAPIInvalidaException("Erro ao tentar calcular a severidade da vulnerabilidade");
         }
     }
 }
