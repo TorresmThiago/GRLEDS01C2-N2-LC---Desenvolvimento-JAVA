@@ -1,5 +1,9 @@
 package br.edu.infnet.appseguranca.model.domain;
 
+import java.util.Arrays;
+
+import br.edu.infnet.appseguranca.model.auxiliar.Constantes;
+
 public class VulnMobile extends Vulnerabilidade {
 
     private String sistemaOperacionalMobile;
@@ -68,15 +72,18 @@ public class VulnMobile extends Vulnerabilidade {
     @Override
     public String calcularSeveridade() {
         int severidade = this.getImpacto() * this.getProbabilidade();
-        if (severidade <= 3) {
-            return "Baixa";
-        } else if (severidade <= 6) {
-            return "Média";
-        } else if (severidade <= 9) {
-            return "Alta";
-        } else {
+        String classificacao = this.getClassificacaoOWASPMobile();
+
+        if ((severidade == 1)
+                && (Arrays.asList(Constantes.CLASSIFICACAO_OWASP_MOBILE_CRITICA).contains(classificacao))) {
             return "Crítica";
+        } else if (severidade <= 1) {
+            return "Alta";
+        } else if (severidade <= 3) {
+            return "Média";
         }
+
+        return "Baixa";
     }
 
 }

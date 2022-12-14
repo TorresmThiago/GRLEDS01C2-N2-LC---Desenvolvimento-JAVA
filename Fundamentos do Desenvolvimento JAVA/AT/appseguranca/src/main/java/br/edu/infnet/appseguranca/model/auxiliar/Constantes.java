@@ -29,6 +29,8 @@ public class Constantes {
     public final static String CLASSIFICACAO_OWASP_A8 = "A8 - Falhas de software e integridade de dados";
     public final static String CLASSIFICACAO_OWASP_A9 = "A9 - Falhas de registro e monitoramento de segurança";
     public final static String CLASSIFICACAO_OWASP_A10 = "A10 - SSRF(Server Side Request Forgery)";
+    public final static String[] CLASSIFICACAO_OWASP_CRITICA = { CLASSIFICACAO_OWASP_A1,
+            CLASSIFICACAO_OWASP_A2, CLASSIFICACAO_OWASP_A3 };
 
     public final static String CLASSIFICACAO_OWASP_MOBILE_A1 = "A1 - Uso impróprio da plataforma";
     public final static String CLASSIFICACAO_OWASP_MOBILE_A2 = "A2 - Armazenamento de dados inseguro";
@@ -40,6 +42,8 @@ public class Constantes {
     public final static String CLASSIFICACAO_OWASP_MOBILE_A8 = "A8 - Alteração de código";
     public final static String CLASSIFICACAO_OWASP_MOBILE_A9 = "A9 - Engenharia reversa";
     public final static String CLASSIFICACAO_OWASP_MOBILE_A10 = "A10 - Funcionalidade alheia";
+    public final static String[] CLASSIFICACAO_OWASP_MOBILE_CRITICA = { CLASSIFICACAO_OWASP_MOBILE_A1,
+            CLASSIFICACAO_OWASP_MOBILE_A2, CLASSIFICACAO_OWASP_MOBILE_A3 };
 
     public final static String CLASSIFICACAO_OWASP_API_A1 = "A1 - Quebra do nivel de autorização de objeto";
     public final static String CLASSIFICACAO_OWASP_API_A2 = "A2 - Quebra de autenticação do usuário";
@@ -51,5 +55,7 @@ public class Constantes {
     public final static String CLASSIFICACAO_OWASP_API_A8 = "A8 - Injeção";
     public final static String CLASSIFICACAO_OWASP_API_A9 = "A9 - Gerenciamento impróprio de ativos";
     public final static String CLASSIFICACAO_OWASP_API_A10 = "A10 - Log e monitoramento insuficientes";
+    public final static String[] CLASSIFICACAO_OWASP_API_CRITICA = { CLASSIFICACAO_OWASP_API_A1,
+            CLASSIFICACAO_OWASP_API_A2, CLASSIFICACAO_OWASP_API_A3 };
 
 }

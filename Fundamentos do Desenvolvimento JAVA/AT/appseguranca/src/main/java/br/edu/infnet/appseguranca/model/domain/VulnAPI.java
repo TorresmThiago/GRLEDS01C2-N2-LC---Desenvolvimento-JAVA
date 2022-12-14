@@ -1,5 +1,9 @@
 package br.edu.infnet.appseguranca.model.domain;
 
+import java.util.Arrays;
+
+import br.edu.infnet.appseguranca.model.auxiliar.Constantes;
+
 public class VulnAPI extends Vulnerabilidade {
 
     private String host;
@@ -65,14 +69,17 @@ public class VulnAPI extends Vulnerabilidade {
     @Override
     public String calcularSeveridade() {
         int severidade = this.getImpacto() * this.getProbabilidade();
-        if (severidade <= 3) {
-            return "Baixa";
-        } else if (severidade <= 6) {
-            return "Média";
-        } else if (severidade <= 9) {
-            return "Alta";
-        } else {
+        String classificacao = this.getClassificacaoOWASPAPI();
+
+        if ((severidade == 1)
+                && (Arrays.asList(Constantes.CLASSIFICACAO_OWASP_API_CRITICA).contains(classificacao))) {
             return "Crítica";
+        } else if (severidade <= 1) {
+            return "Alta";
+        } else if (severidade <= 3) {
+            return "Média";
         }
+
+        return "Baixa";
     }
 }
