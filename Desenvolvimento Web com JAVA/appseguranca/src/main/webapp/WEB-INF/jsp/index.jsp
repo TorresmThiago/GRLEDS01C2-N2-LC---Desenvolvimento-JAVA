@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+
     <!DOCTYPE html>
     <html>
 
@@ -11,10 +12,8 @@
     <body>
 
         <div class="container">
-            <form action="usuario" method="get">
-                <h3>Listagem de Usuários</h3>
-                <button type="submit">Novo</button>
-            </form>
+            <h3>App Segurança</h3>
+            <h4>Lista de usuários <a href="/usuario/lista">aqui</a></h4>
         </div>
     </body>
 
