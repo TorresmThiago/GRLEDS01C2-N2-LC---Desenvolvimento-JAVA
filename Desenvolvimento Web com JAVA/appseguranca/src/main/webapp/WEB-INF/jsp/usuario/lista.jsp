@@ -1,63 +1,51 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-    <!DOCTYPE html>
-    <html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-    <head>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <meta charset="ISO-8859-1">
-        <title>AppLanche</title>
-    </head>
+        <!DOCTYPE html>
+        <html>
 
-    <body>
+        <head>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+            <meta charset="UTF-8">
+            <title>AppSegurança</title>
+        </head>
 
+        <body>
+            <c:import url="/WEB-INF/jsp/menu.jsp" />
 
+            <div class="container">
 
-        <div class="container">
-
-            <form action="/usuario/cadastro" method="get">
                 <h3>Listagem de Usuários</h3>
 
-                <button type="submit">Novo</button>
-            </form>
+                <c:if test="${empty usuarios}">
+                    <div class="alert alert-danger">
+                        <strong>Atenção!</strong> Não há usuários cadastrados.
+                    </div>
+                </c:if>
 
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Senha</th>
-                        <th>E-mail</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- <% List<Usuario> lista = (List<Usuario>) request.getAttribute("lista");
-                            for (Usuario usuario : lista) {
-                            %>
+                <c:if test="${not empty usuarios}">
+                    <table class="table table-striped">
+                        <thead>
                             <tr>
-                                <td>
-                                    <%= usuario.getNome() %>
-                                </td>
-                                <td>
-                                    <%= usuario.getSenha() %>
-                                </td>
-                                <td>
-                                    <%= usuario.getEmail() %>
-                                </td>
+                                <th>Nome</th>
+                                <th>Senha</th>
+                                <th>E-mail</th>
                             </tr>
-                            <% } %> -->
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${usuarios}" var="usuario">
+                                <tr>
+                                    <td>${usuario.nome}</td>
+                                    <td>${usuario.senha}</td>
+                                    <td>${usuario.email}</td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </c:if>
 
-                    <tr>
-                        <td>
-                            Fulano Sicrano
-                        </td>
-                        <td>
-                            !S3NH4
-                        </td>
-                        <td>
-                            fulano@sicrano.com
-                </tbody>
-            </table>
-        </div>
+            </div>
 
-    </body>
+        </body>
 
-    </html>
+        </html>

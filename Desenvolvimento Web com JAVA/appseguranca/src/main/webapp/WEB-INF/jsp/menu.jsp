@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">AppSegurança</a>
+                </div>
+
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="/usuario/lista">Usuário</a></li>
+                    <li><a href="#">Análise</a></li>
+                    <li><a href="#">Aplicação</a></li>
+                    <li><a href="#">Vulnerabilidades</a></li>
+                    <li><a href="#">Web</a></li>
+                    <li><a href="#">API</a></li>
+                    <li><a href="#">Mobile</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/usuario/cadastro"><span class="glyphicon glyphicon-user"></span> Registrar</a></li>
+                    <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div>
+        </nav>

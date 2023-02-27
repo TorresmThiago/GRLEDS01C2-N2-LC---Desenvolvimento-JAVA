@@ -1,34 +1,44 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-    <!DOCTYPE html>
-    <html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-    <head>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-        <meta charset="ISO-8859-1">
-        <title>AppSegurança</title>
-    </head>
+        <!DOCTYPE html>
+        <html>
 
-    <body>
+        <head>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+            <meta charset="UTF-8">
+            <title>AppSegurança</title>
+        </head>
 
-        <div class="container">
-            <h2>Autenticação</h2>
+        <body>
 
-            <form action="/login" method="post">
+            <c:import url="/WEB-INF/jsp/menu.jsp" />
 
-                <div class="form-group">
-                    <label>E-mail:</label>
-                    <input type="text" class="form-control" placeholder="Login" name="login">
-                </div>
+            <div class="container">
+                <h2>Autenticação</h2>
 
-                <div class="form-group">
-                    <label>Senha:</label>
-                    <input type="password" class="form-control" placeholder="Senha" name="senha">
-                </div>
+                <c:if test="${not empty mensagem}">
+                    <div class="alert alert-danger">
+                        <strong>Atenção!</strong> ${mensagem}
+                    </div>
+                </c:if>
 
-                <button type="submit" class="btn btn-default">Acessar</button>
-            </form>
-        </div>
+                <form action="/login" method="post">
 
-    </body>
+                    <div class="form-group">
+                        <label>E-mail:</label>
+                        <input type="text" class="form-control" placeholder="Login" name="login">
+                    </div>
 
-    </html>
+                    <div class="form-group">
+                        <label>Senha:</label>
+                        <input type="password" class="form-control" placeholder="Senha" name="senha">
+                    </div>
+
+                    <button type="submit" class="btn btn-default">Acessar</button>
+                </form>
+            </div>
+
+        </body>
+
+        </html>

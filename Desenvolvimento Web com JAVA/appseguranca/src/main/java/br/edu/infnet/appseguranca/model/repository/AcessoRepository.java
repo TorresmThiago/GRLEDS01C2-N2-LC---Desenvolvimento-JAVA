@@ -1,6 +1,6 @@
 package br.edu.infnet.appseguranca.model.repository;
 
-import java.util.List;
+import java.util.Collection;
 
 import br.edu.infnet.appseguranca.model.domain.Usuario;
 
@@ -9,7 +9,7 @@ public class AcessoRepository {
     public static Usuario autenticar(Usuario usuario) {
 
         String credencial = usuario.getEmail() + ":" + usuario.getSenha();
-        List<Usuario> lista = UsuarioRepository.obterLista();
+        Collection<Usuario> lista = UsuarioRepository.obterLista();
 
         if (lista.isEmpty()) {
             if (usuario.getEmail().equalsIgnoreCase(usuario.getSenha())) {

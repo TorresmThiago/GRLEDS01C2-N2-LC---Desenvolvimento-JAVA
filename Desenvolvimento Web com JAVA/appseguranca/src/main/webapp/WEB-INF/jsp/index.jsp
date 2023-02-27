@@ -1,20 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-    <!DOCTYPE html>
-    <html>
+        <!DOCTYPE html>
+        <html>
 
-    <head>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-        <meta charset="ISO-8859-1">
-        <title>App Segurança</title>
-    </head>
+        <head>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+            <meta charset="UTF-8">
+            <title>App Segurança</title>
+        </head>
 
-    <body>
+        <body>
 
-        <div class="container">
-            <h3>App Segurança</h3>
-            <h4>Lista de usuários <a href="/usuario/lista">aqui</a></h4>
-        </div>
-    </body>
+            <c:import url="/WEB-INF/jsp/menu.jsp" />
 
-    </html>
+        </body>
+
+        </html>

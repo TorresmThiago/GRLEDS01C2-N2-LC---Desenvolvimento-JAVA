@@ -2,6 +2,7 @@ package br.edu.infnet.appseguranca.model.domain;
 
 public class Usuario {
 
+    private Integer id;
     private String nome;
     private String email;
     private String senha;
@@ -18,6 +19,14 @@ public class Usuario {
     public Usuario(String email, String senha) {
         this.email = email;
         this.senha = senha;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {
