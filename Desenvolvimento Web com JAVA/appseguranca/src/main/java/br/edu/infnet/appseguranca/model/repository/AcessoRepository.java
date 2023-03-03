@@ -19,7 +19,7 @@ public class AcessoRepository {
 
         for (Usuario user : lista) {
             if (credencial.equals(user.getEmail() + ":" + user.getSenha())) {
-                return new Usuario("Administrador", usuario.getEmail(), usuario.getSenha());
+                return new Usuario(user.getNome(), user.getEmail(), user.getSenha());
             }
         }
 

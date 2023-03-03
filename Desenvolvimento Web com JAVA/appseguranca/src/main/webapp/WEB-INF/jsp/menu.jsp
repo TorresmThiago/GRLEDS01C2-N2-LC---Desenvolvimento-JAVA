@@ -9,18 +9,28 @@
 
                 <ul class="nav navbar-nav">
                     <li><a href="#">Home</a></li>
-                    <li><a href="/usuario/lista">Usuário</a></li>
-                    <li><a href="#">Análise</a></li>
-                    <li><a href="#">Aplicação</a></li>
-                    <li><a href="#">Vulnerabilidades</a></li>
-                    <li><a href="#">Web</a></li>
-                    <li><a href="#">API</a></li>
-                    <li><a href="#">Mobile</a></li>
+                    <c:if test="${not empty usuario}">
+                        <li><a href="/usuario/lista">Usuário</a></li>
+                        <li><a href="#">Análise</a></li>
+                        <li><a href="#">Aplicação</a></li>
+                        <li><a href="#">Vulnerabilidades</a></li>
+                        <li><a href="#">Web</a></li>
+                        <li><a href="#">API</a></li>
+                        <li><a href="#">Mobile</a></li>
+                    </c:if>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/usuario/cadastro"><span class="glyphicon glyphicon-user"></span> Registrar</a></li>
-                    <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <c:if test="${not empty usuario}">
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Olá ${usuario.nome}!</a></li>
+                        <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    </c:if>
+
+                    <c:if test="${empty usuario}">
+                        <li><a href="/usuario/cadastro"><span class="glyphicon glyphicon-user"></span>Registrar</a>
+                        </li>
+                        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </c:if>
                 </ul>
             </div>
         </nav>
