@@ -51,6 +51,7 @@
                                     <td>${vuln.getDescricao()}</td>
                                     <td>${vuln.getRecomendacao()}</td>
                                     <td>${vuln.calcularSeveridade()}</td>
+                                    <td>${vuln.getReferencia()}</td>
                                     <td>${vuln.getClassificacaoOWASPAPI()}</td>
                                     <td>${vuln.getHost()}</td>
                                     <td>${vuln.getRequisicao()}</td>

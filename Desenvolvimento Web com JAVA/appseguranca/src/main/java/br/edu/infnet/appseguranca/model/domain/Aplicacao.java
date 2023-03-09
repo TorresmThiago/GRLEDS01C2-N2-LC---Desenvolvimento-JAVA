@@ -15,9 +15,7 @@ public class Aplicacao {
     public Aplicacao() {
     }
 
-    public Aplicacao(Analise analise, int id, String nome, String demanda, String ambiente, String endereco) {
-        this.analise = analise;
-        this.id = id;
+    public Aplicacao(String nome, String demanda, String ambiente, String endereco) {
         this.nome = nome;
         this.demanda = demanda;
         this.ambiente = ambiente;
