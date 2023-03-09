@@ -12,7 +12,7 @@ public class VulnWebRepository {
 
     private static Map<Integer, VulnWeb> mapaVulnWeb = new HashMap<Integer, VulnWeb>();
 
-    public static boolean incluir(VulnWeb vulnWeb) {
+    public boolean incluir(VulnWeb vulnWeb) {
 
         vulnWeb.setId(id++);
 
@@ -24,19 +24,19 @@ public class VulnWebRepository {
         }
     }
 
-    public static VulnWeb excluir(Integer key) {
+    public VulnWeb excluir(Integer key) {
         return mapaVulnWeb.remove(key);
     }
 
-    public static Collection<VulnWeb> obterLista() {
+    public Collection<VulnWeb> obterLista() {
         return mapaVulnWeb.values();
     }
 
-    public static VulnWeb obterVulnWeb(Integer key) {
+    public VulnWeb obterPorId(Integer key) {
         return mapaVulnWeb.get(key);
     }
 
-    public static boolean alterar(VulnWeb vulnWeb) {
+    public boolean alterar(VulnWeb vulnWeb) {
         try {
             mapaVulnWeb.put(vulnWeb.getId(), vulnWeb);
             return true;

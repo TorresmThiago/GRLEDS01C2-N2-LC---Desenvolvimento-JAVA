@@ -12,7 +12,7 @@ public class AplicacaoRepository {
 
     private static Map<Integer, Aplicacao> mapaAplicacao = new HashMap<Integer, Aplicacao>();
 
-    public static boolean incluir(Aplicacao aplicacao) {
+    public boolean incluir(Aplicacao aplicacao) {
 
         aplicacao.setId(id++);
 
@@ -24,19 +24,19 @@ public class AplicacaoRepository {
         }
     }
 
-    public static Aplicacao excluir(Integer key) {
+    public Aplicacao excluir(Integer key) {
         return mapaAplicacao.remove(key);
     }
 
-    public static Collection<Aplicacao> obterLista() {
+    public Collection<Aplicacao> obterLista() {
         return mapaAplicacao.values();
     }
 
-    public static Aplicacao obterAplicacao(Integer key) {
+    public Aplicacao obterPorId(Integer key) {
         return mapaAplicacao.get(key);
     }
 
-    public static boolean alterar(Aplicacao aplicacao) {
+    public boolean alterar(Aplicacao aplicacao) {
         try {
             mapaAplicacao.put(aplicacao.getId(), aplicacao);
             return true;
