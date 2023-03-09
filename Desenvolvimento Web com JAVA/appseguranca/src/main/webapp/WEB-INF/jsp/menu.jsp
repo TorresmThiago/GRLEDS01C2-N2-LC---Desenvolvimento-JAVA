@@ -12,11 +12,11 @@
                     <c:if test="${not empty usuario}">
                         <li><a href="/usuario/lista">Usuário</a></li>
                         <li><a href="#">Análise</a></li>
-                        <li><a href="#">Aplicação</a></li>
+                        <li><a href="/aplicacao/lista">Aplicação</a></li>
                         <li><a href="#">Vulnerabilidades</a></li>
-                        <li><a href="#">Web</a></li>
-                        <li><a href="#">API</a></li>
-                        <li><a href="#">Mobile</a></li>
+                        <li><a href="/vulnweb/lista">Web</a></li>
+                        <li><a href="/vulnapi/lista">API</a></li>
+                        <li><a href="/vulnmobile/lista">Mobile</a></li>
                     </c:if>
                 </ul>
 

@@ -13,6 +13,9 @@ public abstract class Vulnerabilidade {
     private String referencia;
     private String tipo;
 
+    public Vulnerabilidade() {
+    }
+
     public Vulnerabilidade(int id, String nome, String descricao, String recomendacao,
             int impacto, int probabilidade, String referencia, String tipo)
             throws Exception {

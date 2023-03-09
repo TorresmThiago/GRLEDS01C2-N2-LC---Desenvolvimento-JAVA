@@ -18,13 +18,13 @@ public class VulnMobileController {
 
     @GetMapping(value = "/vulnmobile/cadastro")
     public String telaCadastro() {
-        return "vulnmobile/cadastro";
+        return "vulnMobile/cadastro";
     }
 
     @GetMapping(value = "/vulnmobile/lista")
     public String telaLista(Model model) {
         model.addAttribute("vulnmobiles", VulnMobileService.obterLista());
-        return "vulnmobile/lista";
+        return "vulnMobile/lista";
     }
 
     @PostMapping(value = "/vulnmobile/incluir")
@@ -33,7 +33,7 @@ public class VulnMobileController {
         return "redirect:/vulnmobile/lista";
     }
 
-    @GetMapping(value = "/vulnmobile/excluir")
+    @GetMapping(value = "/vulnmobile/{id}/excluir")
     public String excluir(@PathVariable Integer id) {
         VulnMobileService.excluir(id);
         return "redirect:/vulnmobile/lista";

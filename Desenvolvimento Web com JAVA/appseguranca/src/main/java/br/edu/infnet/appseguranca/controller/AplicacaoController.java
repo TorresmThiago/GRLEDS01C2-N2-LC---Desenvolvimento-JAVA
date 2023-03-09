@@ -33,7 +33,7 @@ public class AplicacaoController {
         return "redirect:/aplicacao/lista";
     }
 
-    @GetMapping(value = "/aplicacao/excluir")
+    @GetMapping(value = "/aplicacao/{id}/excluir")
     public String excluir(@PathVariable Integer id) {
         aplicacaoService.excluir(id);
         return "redirect:/aplicacao/lista";

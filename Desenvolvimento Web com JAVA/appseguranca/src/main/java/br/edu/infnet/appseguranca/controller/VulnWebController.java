@@ -18,13 +18,13 @@ public class VulnWebController {
 
     @GetMapping(value = "/vulnweb/cadastro")
     public String telaCadastro() {
-        return "vulnweb/cadastro";
+        return "vulnWeb/cadastro";
     }
 
     @GetMapping(value = "/vulnweb/lista")
     public String telaLista(Model model) {
         model.addAttribute("vulnwebs", VulnWebService.obterLista());
-        return "vulnweb/lista";
+        return "vulnWeb/lista";
     }
 
     @PostMapping(value = "/vulnweb/incluir")
@@ -33,7 +33,7 @@ public class VulnWebController {
         return "redirect:/vulnweb/lista";
     }
 
-    @GetMapping(value = "/vulnweb/excluir")
+    @GetMapping(value = "/vulnweb/{id}/excluir")
     public String excluir(@PathVariable Integer id) {
         VulnWebService.excluir(id);
         return "redirect:/vulnweb/lista";

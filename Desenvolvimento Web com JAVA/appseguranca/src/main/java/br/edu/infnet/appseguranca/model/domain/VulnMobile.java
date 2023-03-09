@@ -11,6 +11,10 @@ public class VulnMobile extends Vulnerabilidade {
     private String classificacaoOWASPMobile;
     private String[] pacotesAfetados;
 
+    public VulnMobile() {
+        super();
+    }
+
     public VulnMobile(int id, String nome, String descricao, String recomendacao,
             int impacto, int probabilidade, String referencia, String classificacaoOWASPMobile,
             String sistemaOperacionalMobile, String[] pacotesAfetados) throws Exception {

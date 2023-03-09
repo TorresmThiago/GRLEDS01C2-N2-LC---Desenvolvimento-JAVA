@@ -15,30 +15,38 @@
 
             <div class="container">
 
-                <h3>Listagem de Usuários</h3>
+                <h3>Listagem de Aplicações</h3>
 
-                <c:if test="${empty usuarios}">
+                <form action="/aplicacao/cadastro" method="get">
+                    <button type="submit">Registrar nova Aplicação</button>
+                </form>
+
+                <c:if test="${empty aplicacoes}">
                     <div class="alert alert-danger">
-                        <strong>Atenção!</strong> Não há usuários cadastrados.
+                        <strong>Atenção!</strong> Não há aplicações cadastradas.
                     </div>
                 </c:if>
 
-                <c:if test="${not empty usuarios}">
+                <c:if test="${not empty aplicacoes}">
                     <table class="table table-striped">
                         <thead>
                             <tr>
+                                <th>Id</th>
                                 <th>Nome</th>
-                                <th>Senha</th>
-                                <th>E-mail</th>
+                                <th>Demanda</th>
+                                <th>Ambiente</th>
+                                <th>Endereço</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${usuarios}" var="usuario">
+                            <c:forEach items="${aplicacoes}" var="aplicacao">
                                 <tr>
-                                    <td>${usuario.nome}</td>
-                                    <td>${usuario.senha}</td>
-                                    <td>${usuario.email}</td>
-                                    <td><a href="/usuario/${usuario.id}/excluir">excluir</a></td>
+                                    <td>${aplicacao.id}</td>
+                                    <td>${aplicacao.nome}</td>
+                                    <td>${aplicacao.demanda}</td>
+                                    <td>${aplicacao.ambiente}</td>
+                                    <td>${aplicacao.endereco}</td>
+                                    <td><a href="/aplicacao/${aplicacao.id}/excluir">excluir</a></td>
                                 </tr>
                             </c:forEach>
                         </tbody>

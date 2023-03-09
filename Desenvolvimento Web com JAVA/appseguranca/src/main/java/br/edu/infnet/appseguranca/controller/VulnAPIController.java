@@ -18,13 +18,13 @@ public class VulnAPIController {
 
     @GetMapping(value = "/vulnapi/cadastro")
     public String telaCadastro() {
-        return "vulnapi/cadastro";
+        return "vulnAPI/cadastro";
     }
 
     @GetMapping(value = "/vulnapi/lista")
     public String telaLista(Model model) {
         model.addAttribute("vulnapis", vulnAPIService.obterLista());
-        return "vulnapi/lista";
+        return "vulnAPI/lista";
     }
 
     @PostMapping(value = "/vulnapi/incluir")
@@ -33,7 +33,7 @@ public class VulnAPIController {
         return "redirect:/vulnapi/lista";
     }
 
-    @GetMapping(value = "/vulnapi/excluir")
+    @GetMapping(value = "/vulnapi/{id}/excluir")
     public String excluir(@PathVariable Integer id) {
         vulnAPIService.excluir(id);
         return "redirect:/vulnapi/lista";

@@ -12,6 +12,10 @@ public class VulnWeb extends Vulnerabilidade {
     private boolean redeInterna;
     private String classificacaoOWASP;
 
+    public VulnWeb() {
+        super();
+    }
+
     public VulnWeb(int id, String nome, String descricao, String recomendacao,
             int impacto, int probabilidade, String referencia,
             String navegador, String[] urlAfetada, boolean redeInterna, String classificacaoOWASP) throws Exception {

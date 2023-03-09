@@ -12,6 +12,10 @@ public class VulnAPI extends Vulnerabilidade {
     private String metodo;
     private String classificacaoOWASPAPI;
 
+    public VulnAPI() {
+        super();
+    }
+
     public VulnAPI(int id, String nome, String descricao, String recomendacao,
             int impacto, int probabilidade, String referencia, String classificacaoOWASPAPI,
             String host, String requisicao, String metodo) throws Exception {

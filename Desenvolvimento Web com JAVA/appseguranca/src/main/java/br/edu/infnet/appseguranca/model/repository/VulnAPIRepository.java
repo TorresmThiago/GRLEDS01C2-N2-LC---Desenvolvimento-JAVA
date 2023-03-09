@@ -4,8 +4,11 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import br.edu.infnet.appseguranca.model.domain.VulnAPI;
 
+@Repository
 public class VulnAPIRepository {
 
     private static Integer id = 1;
