@@ -128,8 +128,9 @@ public class Analise {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("Analise %d: %s;", id, titulo));
         sb.append(String.format("Aplicacao %d: %s; ", aplicacao.getId(), aplicacao.getNome()));
-        sb.append(String.format("Numero de vulnerabilidades: %d; ", aplicacao.getVulnerabilidades().size()));
-        sb.append(String.format("Status da analise: %s", status));
+        // sb.append(String.format("Numero de vulnerabilidades: %d; ",
+        // aplicacao.getVulnerabilidades().size()));
+        // sb.append(String.format("Status da analise: %s", status));
         return sb.toString();
 
     }

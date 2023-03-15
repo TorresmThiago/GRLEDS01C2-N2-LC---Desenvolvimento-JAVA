@@ -36,6 +36,7 @@
                                 <th>Demanda</th>
                                 <th>Ambiente</th>
                                 <th>Endereço</th>
+                                <th>Criado por</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -46,6 +47,7 @@
                                     <td>${aplicacao.demanda}</td>
                                     <td>${aplicacao.ambiente}</td>
                                     <td>${aplicacao.endereco}</td>
+                                    <td>${aplicacao.usuario.nome}</td>
                                     <td><a href="/aplicacao/${aplicacao.id}/excluir">excluir</a></td>
                                 </tr>
                             </c:forEach>

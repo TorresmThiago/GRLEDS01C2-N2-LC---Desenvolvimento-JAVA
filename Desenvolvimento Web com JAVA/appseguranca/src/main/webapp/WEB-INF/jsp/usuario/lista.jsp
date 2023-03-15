@@ -30,6 +30,7 @@
                                 <th>Nome</th>
                                 <th>Senha</th>
                                 <th>E-mail</th>
+                                <th>Qntd. de Aplicações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -38,6 +39,7 @@
                                     <td>${usuario.nome}</td>
                                     <td>${usuario.senha}</td>
                                     <td>${usuario.email}</td>
+                                    <td>${usuario.aplicacoes.size()}</td>
                                     <td><a href="/usuario/${usuario.id}/excluir">excluir</a></td>
                                 </tr>
                             </c:forEach>

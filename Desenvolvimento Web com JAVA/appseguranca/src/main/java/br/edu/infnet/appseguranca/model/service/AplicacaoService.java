@@ -1,6 +1,7 @@
 package br.edu.infnet.appseguranca.model.service;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,22 +16,27 @@ public class AplicacaoService {
     private AplicacaoRepository aplicacaoRepository;
 
     public boolean incluir(Aplicacao aplicacao) {
-        return aplicacaoRepository.incluir(aplicacao);
+        Aplicacao a = aplicacaoRepository.save(aplicacao);
+        return a != null;
     }
 
     public void excluir(Integer id) {
-        aplicacaoRepository.excluir(id);
+        aplicacaoRepository.deleteById(id);
     }
 
     public Collection<Aplicacao> obterLista() {
-        return aplicacaoRepository.obterLista();
+        return (Collection<Aplicacao>) aplicacaoRepository.findAll();
     }
 
-    public Aplicacao obterPorId(Integer id) {
-        return aplicacaoRepository.obterPorId(id);
+    public Collection<Aplicacao> obterLista(Integer id) {
+        return aplicacaoRepository.obterLista(id);
+    }
+
+    public Optional<Aplicacao> obterPorId(Integer id) {
+        return aplicacaoRepository.findById(id);
     }
 
     public void alterar(Aplicacao aplicacao) {
-        aplicacaoRepository.alterar(aplicacao);
+        aplicacaoRepository.save(aplicacao);
     }
 }

@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.appseguranca.model.domain.Aplicacao;
+import br.edu.infnet.appseguranca.model.domain.Usuario;
 import br.edu.infnet.appseguranca.model.service.AplicacaoService;
 
 @Controller
@@ -22,13 +24,14 @@ public class AplicacaoController {
     }
 
     @GetMapping(value = "/aplicacao/lista")
-    public String telaLista(Model model) {
-        model.addAttribute("aplicacoes", aplicacaoService.obterLista());
+    public String telaLista(Model model, @SessionAttribute("usuario") Usuario usuario) {
+        model.addAttribute("aplicacoes", aplicacaoService.obterLista(usuario.getId()));
         return "aplicacao/lista";
     }
 
     @PostMapping(value = "/aplicacao/incluir")
-    public String incluir(Aplicacao aplicacao) {
+    public String incluir(Aplicacao aplicacao, @SessionAttribute("usuario") Usuario usuario) {
+        aplicacao.setUsuario(usuario);
         aplicacaoService.incluir(aplicacao);
         return "redirect:/aplicacao/lista";
     }
