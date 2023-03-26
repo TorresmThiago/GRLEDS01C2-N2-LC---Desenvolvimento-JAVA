@@ -1,6 +1,6 @@
 package br.edu.infnet.appseguranca.model.domain;
 
-//import java.util.List;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,7 +28,10 @@ public class Aplicacao {
     @ManyToOne
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
-    // private List<Vulnerabilidade> vulnerabilidades;
+
+    @OneToMany
+    @JoinColumn(name = "idAplicacao")
+    private List<Vulnerabilidade> vulnerabilidades;
 
     public Aplicacao() {
     }
@@ -102,13 +106,13 @@ public class Aplicacao {
         this.endereco = endereco;
     }
 
-    // public List<Vulnerabilidade> getVulnerabilidades() {
-    // return vulnerabilidades;
-    // }
+    public List<Vulnerabilidade> getVulnerabilidades() {
+        return vulnerabilidades;
+    }
 
-    // public void setVulnerabilidades(List<Vulnerabilidade> vulnerabilidades) {
-    // this.vulnerabilidades = vulnerabilidades;
-    // }
+    public void setVulnerabilidades(List<Vulnerabilidade> vulnerabilidades) {
+        this.vulnerabilidades = vulnerabilidades;
+    }
 
     public Usuario getUsuario() {
         return usuario;
@@ -127,15 +131,15 @@ public class Aplicacao {
         sb.append(String.format("Demanda = %s; ", demanda));
         sb.append(String.format("Endereco = %s; ", endereco));
         sb.append(String.format("Id = %d; ", id));
-        // sb.append(String.format("Total de vulnerabilidades: %d {\r\n",
-        // vulnerabilidades.size()));
+        sb.append(String.format("Total de vulnerabilidades: %d {\r\n",
+                vulnerabilidades.size()));
 
-        // for (int i = 0; i < vulnerabilidades.size(); i++) {
-        // sb.append(String.format("(%s) %d: %s; ", vulnerabilidades.get(i).getTipo(), i
-        // + 1,
-        // vulnerabilidades.get(i).getNome()));
-        // sb.append("\r\n");
-        // }
+        for (int i = 0; i < vulnerabilidades.size(); i++) {
+            sb.append(String.format("(%s) %d: %s; ", vulnerabilidades.get(i).getTipo(), i
+                    + 1,
+                    vulnerabilidades.get(i).getNome()));
+            sb.append("\r\n");
+        }
 
         sb.append("} ]");
         return sb.toString();

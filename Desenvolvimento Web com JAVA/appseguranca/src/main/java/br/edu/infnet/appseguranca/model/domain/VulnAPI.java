@@ -2,9 +2,14 @@ package br.edu.infnet.appseguranca.model.domain;
 
 import java.util.Arrays;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import br.edu.infnet.appseguranca.model.auxiliar.Constantes;
 import br.edu.infnet.appseguranca.model.exceptions.VulnAPIInvalidaException;
 
+@Entity
+@Table(name = "TVulnApi")
 public class VulnAPI extends Vulnerabilidade {
 
     private String host;

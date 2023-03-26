@@ -9,6 +9,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.appseguranca.model.domain.Aplicacao;
+import br.edu.infnet.appseguranca.model.domain.Usuario;
 import br.edu.infnet.appseguranca.model.domain.VulnWeb;
 import br.edu.infnet.appseguranca.model.service.VulnWebService;
 
@@ -30,6 +32,12 @@ public class VulnWebLoader implements ApplicationRunner {
             String linha = leitura.readLine();
             String[] campos = null;
 
+            Usuario usuario = new Usuario();
+            usuario.setId(1);
+
+            Aplicacao aplicacao = new Aplicacao();
+            aplicacao.setId(1);
+
             while (linha != null) {
 
                 campos = linha.split(";");
@@ -37,7 +45,10 @@ public class VulnWebLoader implements ApplicationRunner {
 
                 VulnWeb vulnWeb = new VulnWeb(0, campos[0], campos[1], campos[2],
                         Integer.parseInt(campos[3]), Integer.parseInt(campos[4]), campos[5], campos[6],
-                        campos[7].split("||"), Boolean.valueOf(campos[8]), campos[9]);
+                        campos[7], Boolean.valueOf(campos[8]), campos[9]);
+
+                vulnWeb.setAplicacao(aplicacao);
+                vulnWeb.setUsuario(usuario);
                 vulnWebService.incluir(vulnWeb);
             }
 

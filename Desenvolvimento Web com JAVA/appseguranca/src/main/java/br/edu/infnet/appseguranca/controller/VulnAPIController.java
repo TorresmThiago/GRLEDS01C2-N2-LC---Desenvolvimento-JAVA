@@ -39,9 +39,9 @@ public class VulnAPIController {
         return "redirect:/vulnapi/lista";
     }
 
-    @PostMapping(value = "/vulnapi/alterar")
-    public String alterar(VulnAPI vulnapi) {
-        vulnAPIService.alterar(vulnapi);
-        return "redirect:/vulnapi/lista";
-    }
+    // @PostMapping(value = "/vulnapi/alterar")
+    // public String alterar(VulnAPI vulnapi) {
+    // vulnAPIService.alterar(vulnapi);
+    // return "redirect:/vulnapi/lista";
+    // }
 }

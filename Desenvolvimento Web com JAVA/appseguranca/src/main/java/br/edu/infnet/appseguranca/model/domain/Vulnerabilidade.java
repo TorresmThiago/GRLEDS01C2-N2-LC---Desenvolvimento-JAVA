@@ -1,9 +1,24 @@
 package br.edu.infnet.appseguranca.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import br.edu.infnet.appseguranca.model.exceptions.*;
 
+@Entity
+@Table(name = "TVulnerabilidade")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Vulnerabilidade {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nome;
     private String descricao;
@@ -12,6 +27,12 @@ public abstract class Vulnerabilidade {
     private int probabilidade;
     private String referencia;
     private String tipo;
+    @ManyToOne
+    @JoinColumn(name = "idUsuario")
+    private Usuario usuario;
+    @ManyToOne
+    @JoinColumn(name = "idAplicacao")
+    private Aplicacao aplicacao;
 
     public Vulnerabilidade() {
     }
@@ -112,6 +133,26 @@ public abstract class Vulnerabilidade {
 
     public void setReferencia(String referencia) {
         this.referencia = referencia;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Aplicacao getAplicacao() {
+        return aplicacao;
+    }
+
+    public void setAplicacao(Aplicacao aplicacao) {
+        this.aplicacao = aplicacao;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getTipo() {

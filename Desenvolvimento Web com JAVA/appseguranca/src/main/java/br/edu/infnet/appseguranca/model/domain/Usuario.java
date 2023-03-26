@@ -24,15 +24,11 @@ public class Usuario {
 
     @OneToMany
     @JoinColumn(name = "idUsuario")
+    private List<Vulnerabilidade> vulnerabilidades;
+
+    @OneToMany
+    @JoinColumn(name = "idUsuario")
     private List<Aplicacao> aplicacoes;
-
-    public List<Aplicacao> getAplicacoes() {
-        return aplicacoes;
-    }
-
-    public void setAplicacoes(List<Aplicacao> aplicacoes) {
-        this.aplicacoes = aplicacoes;
-    }
 
     public Usuario() {
     }
@@ -78,6 +74,22 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public List<Vulnerabilidade> getVulnerabilidades() {
+        return vulnerabilidades;
+    }
+
+    public void setVulnerabilidades(List<Vulnerabilidade> vulnerabilidades) {
+        this.vulnerabilidades = vulnerabilidades;
+    }
+
+    public List<Aplicacao> getAplicacoes() {
+        return aplicacoes;
+    }
+
+    public void setAplicacoes(List<Aplicacao> aplicacoes) {
+        this.aplicacoes = aplicacoes;
     }
 
     @Override

@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.edu.infnet.appseguranca.model.domain.Usuario;
 import br.edu.infnet.appseguranca.model.domain.VulnWeb;
 import br.edu.infnet.appseguranca.model.repository.VulnWebRepository;
 
@@ -15,22 +16,23 @@ public class VulnWebService {
     private VulnWebRepository vulnWebRepository;
 
     public boolean incluir(VulnWeb vulnWeb) {
-        return vulnWebRepository.incluir(vulnWeb);
+        VulnWeb vuln = vulnWebRepository.save(vulnWeb);
+        return vuln != null;
     }
 
     public void excluir(Integer id) {
-        vulnWebRepository.excluir(id);
+        vulnWebRepository.deleteById(id);
     }
 
     public Collection<VulnWeb> obterLista() {
-        return vulnWebRepository.obterLista();
+        return (Collection<VulnWeb>) vulnWebRepository.findAll();
+    }
+
+    public Collection<VulnWeb> obterLista(Usuario usuario) {
+        return (Collection<VulnWeb>) vulnWebRepository.obterLista(usuario.getId());
     }
 
     public VulnWeb obterPorId(Integer id) {
-        return vulnWebRepository.obterPorId(id);
-    }
-
-    public void alterar(VulnWeb vulnWeb) {
-        vulnWebRepository.alterar(vulnWeb);
+        return vulnWebRepository.findById(id).orElse(null);
     }
 }

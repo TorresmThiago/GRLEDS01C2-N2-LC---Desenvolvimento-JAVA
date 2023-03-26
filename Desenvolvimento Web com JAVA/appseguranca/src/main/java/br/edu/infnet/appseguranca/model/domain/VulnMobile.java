@@ -2,14 +2,19 @@ package br.edu.infnet.appseguranca.model.domain;
 
 import java.util.Arrays;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import br.edu.infnet.appseguranca.model.auxiliar.Constantes;
 import br.edu.infnet.appseguranca.model.exceptions.VulnMobileInvalidaException;
 
+@Entity
+@Table(name = "TVulnMobile")
 public class VulnMobile extends Vulnerabilidade {
 
     private String sistemaOperacionalMobile;
     private String classificacaoOWASPMobile;
-    private String[] pacotesAfetados;
+    private Integer pacotesAfetados;
 
     public VulnMobile() {
         super();
@@ -17,7 +22,7 @@ public class VulnMobile extends Vulnerabilidade {
 
     public VulnMobile(int id, String nome, String descricao, String recomendacao,
             int impacto, int probabilidade, String referencia, String classificacaoOWASPMobile,
-            String sistemaOperacionalMobile, String[] pacotesAfetados) throws Exception {
+            String sistemaOperacionalMobile, Integer pacotesAfetados) throws Exception {
         super(id, nome, descricao, recomendacao, impacto, probabilidade, referencia, Constantes.TIPO_VULN_MOBILE);
 
         if (sistemaOperacionalMobile == null || sistemaOperacionalMobile.length() == 0) {
@@ -28,14 +33,8 @@ public class VulnMobile extends Vulnerabilidade {
             throw new VulnMobileInvalidaException("Classificação OWASP inválida");
         }
 
-        if (pacotesAfetados == null || pacotesAfetados.length == 0) {
+        if (pacotesAfetados == null || pacotesAfetados == 0) {
             throw new VulnMobileInvalidaException("Pacotes afetados inválidos");
-        }
-
-        for (String pacote : pacotesAfetados) {
-            if (pacote == null || pacote.length() == 0) {
-                throw new VulnMobileInvalidaException("Pacotes afetados inválidos");
-            }
         }
 
         if (Integer.parseInt(classificacaoOWASPMobile.substring(1, 2)) < 1
@@ -65,11 +64,11 @@ public class VulnMobile extends Vulnerabilidade {
         this.classificacaoOWASPMobile = classificacaoOWASPMobile;
     }
 
-    public String[] getPacotesAfetados() {
+    public Integer getPacotesAfetados() {
         return pacotesAfetados;
     }
 
-    public void setPacotesAfetados(String[] pacotesAfetados) {
+    public void setPacotesAfetados(Integer pacotesAfetados) {
         this.pacotesAfetados = pacotesAfetados;
     }
 
@@ -85,16 +84,7 @@ public class VulnMobile extends Vulnerabilidade {
         }
 
         sb.append(String.format("SO: %s; ", this.getSistemaOperacionalMobile()));
-        sb.append("Pacotes afetados: { ");
-
-        for (int i = 0; i < this.getPacotesAfetados().length; i++) {
-            sb.append(String.format("%s", this.getPacotesAfetados()[i]));
-            if (i < this.getPacotesAfetados().length - 1) {
-                sb.append(", ");
-            } else {
-                sb.append("}; ");
-            }
-        }
+        sb.append("Pacotes afetados: " + this.getPacotesAfetados() + "; ");
 
         sb.append(String.format("Classificação OWASP MOBILE: %s; ", this.getClassificacaoOWASPMobile()));
         sb.append("]");

@@ -39,9 +39,9 @@ public class VulnWebController {
         return "redirect:/vulnweb/lista";
     }
 
-    @PostMapping(value = "/vulnweb/alterar")
-    public String alterar(VulnWeb vulnweb) {
-        VulnWebService.alterar(vulnweb);
-        return "redirect:/vulnweb/lista";
-    }
+    // @PostMapping(value = "/vulnweb/alterar")
+    // public String alterar(VulnWeb vulnweb) {
+    // VulnWebService.alterar(vulnweb);
+    // return "redirect:/vulnweb/lista";
+    // }
 }

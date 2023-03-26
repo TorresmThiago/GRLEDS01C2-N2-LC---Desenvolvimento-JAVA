@@ -39,9 +39,9 @@ public class VulnMobileController {
         return "redirect:/vulnmobile/lista";
     }
 
-    @PostMapping(value = "/vulnmobile/alterar")
-    public String alterar(VulnMobile vulnmobile) {
-        VulnMobileService.alterar(vulnmobile);
-        return "redirect:/vulnmobile/lista";
-    }
+    // @PostMapping(value = "/vulnmobile/alterar")
+    // public String alterar(VulnMobile vulnmobile) {
+    // VulnMobileService.alterar(vulnmobile);
+    // return "redirect:/vulnmobile/lista";
+    // }
 }

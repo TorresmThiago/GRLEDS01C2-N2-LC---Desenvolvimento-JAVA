@@ -2,13 +2,18 @@ package br.edu.infnet.appseguranca.model.domain;
 
 import java.util.Arrays;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import br.edu.infnet.appseguranca.model.auxiliar.Constantes;
 import br.edu.infnet.appseguranca.model.exceptions.VulnWebInvalidaException;
 
+@Entity
+@Table(name = "TVulnWeb")
 public class VulnWeb extends Vulnerabilidade {
 
     private String navegador;
-    private String[] urlAfetada;
+    private String urlAfetada;
     private boolean redeInterna;
     private String classificacaoOWASP;
 
@@ -18,14 +23,14 @@ public class VulnWeb extends Vulnerabilidade {
 
     public VulnWeb(int id, String nome, String descricao, String recomendacao,
             int impacto, int probabilidade, String referencia,
-            String navegador, String[] urlAfetada, boolean redeInterna, String classificacaoOWASP) throws Exception {
+            String navegador, String urlAfetada, boolean redeInterna, String classificacaoOWASP) throws Exception {
         super(id, nome, descricao, recomendacao, impacto, probabilidade, referencia, Constantes.TIPO_VULN_WEB);
 
         if (navegador == null || navegador.length() == 0) {
             throw new VulnWebInvalidaException("Navegador inválido, favor usar as constantes da classe Constantes");
         }
 
-        if (urlAfetada == null || urlAfetada.length == 0) {
+        if (urlAfetada == null || urlAfetada.length() == 0) {
             throw new VulnWebInvalidaException("URL afetada inválida");
         }
 
@@ -53,11 +58,11 @@ public class VulnWeb extends Vulnerabilidade {
         this.navegador = navegador;
     }
 
-    public String[] getUrlAfetada() {
+    public String getUrlAfetada() {
         return urlAfetada;
     }
 
-    public void setUrlAfetada(String[] urlAfetada) {
+    public void setUrlAfetada(String urlAfetada) {
         this.urlAfetada = urlAfetada;
     }
 
@@ -89,17 +94,7 @@ public class VulnWeb extends Vulnerabilidade {
         }
 
         sb.append(String.format("Navegador: %s; ", this.getNavegador()));
-        sb.append("URL afetada: { ");
-
-        for (int i = 0; i < this.getUrlAfetada().length; i++) {
-            sb.append(String.format("%s", this.getUrlAfetada()[i]));
-            if (i < this.getUrlAfetada().length - 1) {
-                sb.append(", ");
-            } else {
-                sb.append("}; ");
-            }
-        }
-
+        sb.append(String.format("URL afetada: %s; ", this.getUrlAfetada()));
         sb.append(String.format("Rede interna: %s; ", this.isRedeInterna()));
         sb.append(String.format("Classificação OWASP: %s; ", this.getClassificacaoOWASP()));
         sb.append("]");
