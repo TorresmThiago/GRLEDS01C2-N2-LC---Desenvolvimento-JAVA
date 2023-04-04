@@ -15,6 +15,23 @@
             <c:import url="/WEB-INF/jsp/menu.jsp" />
 
             <div class="container">
+
+                <form action="/emailReputation" class="form-inline" method="post">
+                    <h3>Email Check</h3>
+                    <label>Email:</label>
+                    <input type="text" name="emailToCheck" value="torresmthiago@gmail.com" class="form-control">
+
+                    <c:if test="${not empty emailReputation}">
+                        <div class="alert">
+                            ${emailReputation.toString()}
+                        </div>
+                    </c:if>
+
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </form>
+            </div>
+
+            <div class="container">
                 <form action="/usuario/incluir" method="post">
                     <h3>Cadastro de Usuário</h3>
 
