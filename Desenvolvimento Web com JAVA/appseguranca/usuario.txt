@@ -1,3 +1,0 @@
-Administrador;admin@admin.com;S3Nh4!
-Usuario;user@user.com;Senh456
-Convidado;convid@do.com;senha123

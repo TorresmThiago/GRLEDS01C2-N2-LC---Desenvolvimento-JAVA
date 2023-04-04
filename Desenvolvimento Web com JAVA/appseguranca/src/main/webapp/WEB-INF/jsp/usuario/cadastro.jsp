@@ -32,12 +32,20 @@
             </div>
 
             <div class="container">
-                <form action="/usuario/incluir" method="post">
+                <form action="/usuario/incluir" method="post" enctype="multipart/form-data">
                     <h3>Cadastro de Usuário</h3>
 
-                    <div class="form-group">
-                        <label>Nome:</label>
-                        <input type="text" name="nome" value="Fulano Sicrano" class="form-control">
+
+                    <div class="form-row">
+                        <div class="col-3">
+                            <label>Foto:</label>
+                            <input type="file" name="foto" class="form-control">
+                        </div>
+
+                        <div class="col">
+                            <label>Nome:</label>
+                            <input type="text" name="nome" value="Fulano Sicrano" class="form-control">
+                        </div>
                     </div>
 
                     <div class="form-group">

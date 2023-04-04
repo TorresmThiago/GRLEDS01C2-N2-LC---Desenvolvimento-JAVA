@@ -24,8 +24,8 @@ public class AplicacaoController {
     }
 
     @GetMapping(value = "/aplicacao/lista")
-    public String telaLista(Model model, @SessionAttribute("usuario") Usuario usuario) {
-        model.addAttribute("aplicacoes", aplicacaoService.obterLista(usuario.getId()));
+    public String telaLista(Model model) {
+        model.addAttribute("aplicacoes", aplicacaoService.obterLista());
         return "aplicacao/lista";
     }
 

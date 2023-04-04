@@ -8,12 +8,9 @@
                 </div>
 
                 <ul class="nav navbar-nav">
-                    <li><a href="#">Home</a></li>
                     <c:if test="${not empty usuario}">
                         <li><a href="/usuario/lista">Usuário</a></li>
-                        <li><a href="#">Análise</a></li>
                         <li><a href="/aplicacao/lista">Aplicação</a></li>
-                        <li><a href="#">Vulnerabilidades</a></li>
                         <li><a href="/vulnweb/lista">Web</a></li>
                         <li><a href="/vulnapi/lista">API</a></li>
                         <li><a href="/vulnmobile/lista">Mobile</a></li>
@@ -22,6 +19,8 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <c:if test="${not empty usuario}">
+                        <li><img src="https://at-dr4-bucket.s3.us-east-2.amazonaws.com/${usuario.endFoto}" width="50px"
+                                height="50px"></li>
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Olá ${usuario.nome}!</a></li>
                         <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                     </c:if>

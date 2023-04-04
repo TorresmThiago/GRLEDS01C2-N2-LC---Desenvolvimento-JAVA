@@ -1,5 +1,7 @@
 package br.edu.infnet.appseguranca.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import br.edu.infnet.appseguranca.model.domain.Aplicacao;
 import br.edu.infnet.appseguranca.model.domain.Usuario;
+import br.edu.infnet.appseguranca.model.service.AplicacaoService;
 import br.edu.infnet.appseguranca.model.service.UsuarioService;
 
 @Controller
@@ -20,6 +24,9 @@ public class AcessoController {
 
     @Autowired
     private UsuarioService usuarioService;
+
+    @Autowired
+    private AplicacaoService aplicacaoService;
 
     @GetMapping(value = "/login")
     public String telaLogin() {
@@ -32,6 +39,7 @@ public class AcessoController {
         user = usuarioService.autenticar(user);
 
         if (user != null) {
+            user.setAplicacoes((List<Aplicacao>) aplicacaoService.obterLista(user.getId()));
             model.addAttribute("usuario", user);
             return "redirect:/home";
         }

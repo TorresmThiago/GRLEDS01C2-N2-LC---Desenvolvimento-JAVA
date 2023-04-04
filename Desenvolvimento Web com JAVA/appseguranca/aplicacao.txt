@@ -1,3 +1,0 @@
-Aplicação de Teste;Teste de leitura em arquivo;Desenvolvimento;http://localhost:8080
-Aplicação de Teste 2;Teste de criação de um objeto a partir de dados;Desenvolvimento;http://localhost:8080
-Aplicação de Teste 3;Teste envio desses dados para a lista;Desenvolvimento;http://localhost:8080

@@ -21,6 +21,7 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
+    private String endFoto;
 
     @OneToMany
     @JoinColumn(name = "idUsuario")
@@ -90,6 +91,14 @@ public class Usuario {
 
     public void setAplicacoes(List<Aplicacao> aplicacoes) {
         this.aplicacoes = aplicacoes;
+    }
+
+    public String getEndFoto() {
+        return endFoto;
+    }
+
+    public void setEndFoto(String endFoto) {
+        this.endFoto = endFoto;
     }
 
     @Override
