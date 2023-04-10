@@ -8,7 +8,7 @@
                 </div>
 
                 <ul class="nav navbar-nav">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <c:if test="${not empty usuario}">
                         <li><a href="/usuario/lista">Usuário</a></li>
                         <li><a href="#">Análise</a></li>

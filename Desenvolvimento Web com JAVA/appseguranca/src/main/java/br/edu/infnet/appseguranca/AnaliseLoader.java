@@ -11,26 +11,22 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appseguranca.model.domain.Analise;
-import br.edu.infnet.appseguranca.model.domain.Aplicacao;
 import br.edu.infnet.appseguranca.model.domain.Usuario;
-import br.edu.infnet.appseguranca.model.service.AplicacaoService;
+import br.edu.infnet.appseguranca.model.service.AnaliseService;
 
-@Order(3)
+@Order(2)
 @Component
-public class AplicacaoLoader implements ApplicationRunner {
+public class AnaliseLoader implements ApplicationRunner {
 
     @Autowired
-    AplicacaoService aplicacaoService;
+    AnaliseService analiseService;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        String arq = "aplicacao.txt";
+        String arq = "analise.txt";
         Usuario usuario = new Usuario();
         usuario.setId(1);
-
-        Analise analise = new Analise();
-        analise.setId(1);
 
         try {
             FileReader fileR = new FileReader(arq);
@@ -44,10 +40,10 @@ public class AplicacaoLoader implements ApplicationRunner {
                 campos = linha.split(";");
                 linha = leitura.readLine();
 
-                Aplicacao aplicacao = new Aplicacao(campos[0], campos[1], campos[2], campos[3]);
-                aplicacao.setUsuario(usuario);
-                aplicacao.setAnalise(analise);
-                aplicacaoService.incluir(aplicacao);
+                Analise analise = new Analise(campos[0], campos[1], campos[2], campos[3], Integer.parseInt(campos[4]),
+                        campos[5], campos[6], campos[7]);
+                analise.setUsuario(usuario);
+                analiseService.incluir(analise);
             }
 
             leitura.close();

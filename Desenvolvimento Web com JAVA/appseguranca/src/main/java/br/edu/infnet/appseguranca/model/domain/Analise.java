@@ -1,21 +1,46 @@
 package br.edu.infnet.appseguranca.model.domain;
 
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TAnalise")
 public class Analise {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String titulo;
     private String descricao;
     private String cliente;
-    private Aplicacao aplicacao;
     private String atividade;
     private int qtdHoras;
     private String dataInicio;
     private String dataFim;
     private String status;
 
-    public Analise(int id, String titulo, String descricao, String cliente, String atividade,
+    @ManyToOne
+    @JoinColumn(name = "idUsuario")
+    private Usuario usuario;
+
+    @OneToMany
+    @JoinColumn(name = "idAnalise")
+    private List<Aplicacao> aplicacoes;
+
+    public Analise() {
+    }
+
+    public Analise(String titulo, String descricao, String cliente, String atividade,
             int qtdHoras, String dataInicio, String dataFim, String status) {
-        this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
         this.cliente = cliente;
@@ -58,14 +83,6 @@ public class Analise {
         this.cliente = cliente;
     }
 
-    public Aplicacao getAplicacao() {
-        return aplicacao;
-    }
-
-    public void setAplicacao(Aplicacao aplicacao) {
-        this.aplicacao = aplicacao;
-    }
-
     public String getatividade() {
         return atividade;
     }
@@ -106,6 +123,22 @@ public class Analise {
         this.status = status;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public List<Aplicacao> getAplicacoes() {
+        return aplicacoes;
+    }
+
+    public void setAplicacoes(List<Aplicacao> aplicacoes) {
+        this.aplicacoes = aplicacoes;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -113,7 +146,7 @@ public class Analise {
         // sb.append(String.format("Título = %s; ", titulo));
         sb.append(String.format("Descrição = %s; ", descricao));
         sb.append(String.format("Cliente = %s; ", cliente));
-        sb.append(String.format("Aplicação = %s; ", aplicacao.getNome()));
+        // sb.append(String.format("Aplicação = %s; ", aplicacao.getNome()));
         sb.append(String.format("Atividade = %s; ", atividade));
         sb.append(String.format("Qtd. Horas = %d; ", qtdHoras));
         sb.append(String.format("Data Início = %s; ", dataInicio));
@@ -127,7 +160,8 @@ public class Analise {
         // da classe de associação, a quantidade de objetos da classe mãe.
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("Analise %d: %s;", id, titulo));
-        sb.append(String.format("Aplicacao %d: %s; ", aplicacao.getId(), aplicacao.getNome()));
+        // sb.append(String.format("Aplicacao %d: %s; ", aplicacao.getId(),
+        // aplicacao.getNome()));
         // sb.append(String.format("Numero de vulnerabilidades: %d; ",
         // aplicacao.getVulnerabilidades().size()));
         // sb.append(String.format("Status da analise: %s", status));

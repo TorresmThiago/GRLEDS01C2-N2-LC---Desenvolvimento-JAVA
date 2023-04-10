@@ -7,7 +7,7 @@ public class AcessoRepository {
     public static Usuario autenticar(Usuario usuario) {
 
         if (usuario.getEmail().equalsIgnoreCase(usuario.getSenha())) {
-            return new Usuario("Temporario", usuario.getEmail(), usuario.getSenha());
+            return new Usuario("Temporario", usuario.getEmail(), usuario.getSenha(), usuario.isAdmin());
         }
 
         return null;

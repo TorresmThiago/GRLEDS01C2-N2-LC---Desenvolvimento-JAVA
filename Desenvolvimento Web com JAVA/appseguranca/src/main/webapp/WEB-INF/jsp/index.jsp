@@ -14,6 +14,20 @@
 
             <c:import url="/WEB-INF/jsp/menu.jsp" />
 
+            <c:if test="${not empty usuario}">
+                <div class="container">
+                    <h3>Olá ${usuario.nome}!</h3>
+                    <p>Seja bem-vindo ao App Segurança!</p>
+                </div>
+            </c:if>
+
+            <c:if test="${empty usuario}">
+                <div class="container">
+                    <h3>Olá!</h3>
+                    <p>Seja bem-vindo ao App Segurança!</p>
+                </div>
+            </c:if>
+
         </body>
 
         </html>

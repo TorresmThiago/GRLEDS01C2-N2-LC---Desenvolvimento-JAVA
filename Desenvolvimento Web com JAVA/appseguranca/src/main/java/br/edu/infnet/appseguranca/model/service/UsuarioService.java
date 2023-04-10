@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.appseguranca.model.domain.Usuario;
@@ -29,7 +31,7 @@ public class UsuarioService {
     }
 
     public Collection<Usuario> obterLista() {
-        return (Collection<Usuario>) usuarioRepository.findAll();
+        return usuarioRepository.obterLista(Sort.by(Direction.ASC, "nome"));
     }
 
     public Optional<Usuario> obterPorId(Integer id) {

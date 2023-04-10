@@ -37,7 +37,7 @@ public class UsuarioLoader implements ApplicationRunner {
                 campos = linha.split(";");
                 linha = leitura.readLine();
 
-                Usuario usuario = new Usuario(campos[0], campos[1], campos[2]);
+                Usuario usuario = new Usuario(campos[0], campos[1], campos[2], Boolean.parseBoolean(campos[3]));
                 usuarioService.incluir(usuario);
             }
 

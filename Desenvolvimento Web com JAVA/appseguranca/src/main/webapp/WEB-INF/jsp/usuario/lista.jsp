@@ -31,16 +31,19 @@
                                 <th>Senha</th>
                                 <th>E-mail</th>
                                 <th>Qntd. de Aplicações</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${usuarios}" var="usuario">
+                            <c:forEach items="${usuarios}" var="u">
                                 <tr>
-                                    <td>${usuario.nome}</td>
-                                    <td>${usuario.senha}</td>
-                                    <td>${usuario.email}</td>
-                                    <td>${usuario.aplicacoes.size()}</td>
-                                    <td><a href="/usuario/${usuario.id}/excluir">excluir</a></td>
+                                    <td>${u.nome}</td>
+                                    <td>${u.senha}</td>
+                                    <td>${u.email}</td>
+                                    <td>${u.aplicacoes.size()}</td>
+                                    <c:if test="${usuario.admin}">
+                                        <td><a href="/usuario/${u.id}/excluir">excluir</a></td>
+                                    </c:if>
                                 </tr>
                             </c:forEach>
                         </tbody>

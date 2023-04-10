@@ -2,6 +2,7 @@ package br.edu.infnet.appseguranca.model.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,27 +22,41 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
+    private boolean admin;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "idUsuario")
     private List<Vulnerabilidade> vulnerabilidades;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "idUsuario")
     private List<Aplicacao> aplicacoes;
+
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @JoinColumn(name = "idUsuario")
+    private List<Analise> analises;
 
     public Usuario() {
     }
 
-    public Usuario(String nome, String email, String senha) {
+    public Usuario(String nome, String email, String senha, boolean admin) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.admin = admin;
     }
 
     public Usuario(String email, String senha) {
         this.email = email;
         this.senha = senha;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 
     public Integer getId() {

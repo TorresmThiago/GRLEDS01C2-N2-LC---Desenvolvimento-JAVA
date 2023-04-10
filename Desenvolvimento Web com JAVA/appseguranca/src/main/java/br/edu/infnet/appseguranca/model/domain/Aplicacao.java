@@ -15,7 +15,6 @@ import javax.persistence.Table;
 @Table(name = "TAplicacao")
 public class Aplicacao {
 
-    // private Analise analise;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -28,6 +27,10 @@ public class Aplicacao {
     @ManyToOne
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "idAnalise")
+    private Analise analise;
 
     @OneToMany
     @JoinColumn(name = "idAplicacao")
@@ -43,13 +46,13 @@ public class Aplicacao {
         this.endereco = endereco;
     }
 
-    // public Analise getAnalise() {
-    // return analise;
-    // }
+    public Analise getAnalise() {
+        return this.analise;
+    }
 
-    // public void setAnalise(Analise analise) {
-    // this.analise = analise;
-    // }
+    public void setAnalise(Analise analise) {
+        this.analise = analise;
+    }
 
     public int getId() {
         return id;
