@@ -20,56 +20,47 @@
 
                     <div class="form-group">
                         <label>Nome:</label>
-                        <input type="text" name="nome" class="form-control" value="Falha no saneamento de dados"
-                            required>
+                        <input type="text" name="nome" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Descrição:</label>
-                        <input type="text" name="descricao" class="form-control"
-                            value="A aplicação não realiza corretamente o saneamento dos dados de entrada do usuário"
-                            required>
+                        <input type="text" name="descricao" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Recomendação:</label>
-                        <input type="text" name="recomendacao" class="form-control"
-                            value=" todas as entradas e saídas de dados sejam sanitizadas, ou seja, deixando passar apenas os caracteres válidos de acordo com os campos em questão"
-                            required>
+                        <input type="text" name="recomendacao" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Impacto:</label>
-                        <input type="number" name="impacto" min="1" max="3" class="form-control" value="2" required>
+                        <input type="number" name="impacto" min="1" max="3" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Probabilidade:</label>
-                        <input type="number" name="probabilidade" min="1" max="3" class="form-control" value="2"
-                            required>
+                        <input type="number" name="probabilidade" min="1" max="3" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Referência:</label>
-                        <input type="text" name="referencia" class="form-control"
-                            value="https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html"
-                            required>
+                        <input type="text" name="referencia" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Classificação OWASP Mobile:</label>
-                        <input type="text" name="classificacaoOWASPMobile" class="form-control" value="A3 - Injeção"
-                            required>
+                        <input type="text" name="classificacaoOWASPMobile" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Sistema Operacional:</label>
-                        <input type="text" name="sistemaOperacionalMobile" class="form-control" value="iOS" required>
+                        <input type="text" name="sistemaOperacionalMobile" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Pacotes Afetados:</label>
-                        <input type="number" name="pacotesAfetados" class="form-control" value="2" required>
+                        <input type="text" name="pacotesAfetados" class="form-control" required>
                     </div>
 
                     <button type="submit">Cadastrar</button>

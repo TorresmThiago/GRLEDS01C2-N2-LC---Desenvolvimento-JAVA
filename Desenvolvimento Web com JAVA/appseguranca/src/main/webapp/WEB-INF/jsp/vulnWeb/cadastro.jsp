@@ -20,47 +20,42 @@
 
                     <div class="form-group">
                         <label>Nome:</label>
-                        <input type="text" name="nome" class="form-control" required
-                            value="Falha na validação dos campos dos formulários">
+                        <input type="text" name="nome" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Descrição:</label>
-                        <input type="text" name="descricao" class="form-control" required
-                            value="Alguns campos dos formulários não são validados corretamente no servidor, permitindo um funcionamento diferente do previsto na aplicação.">
+                        <input type="text" name="descricao" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Recomendação:</label>
-                        <input type="text" name="recomendacao" class="form-control" required
-                            value="Implementar as devidas validações dos campos dos formulários no lado cliente e, principalmente, no lado servidor da aplicação">
+                        <input type="text" name="recomendacao" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Impacto:</label>
-                        <input type="number" name="impacto" min="1" max="3" class="form-control" required value="2">
+                        <input type="number" name="impacto" min="1" max="3" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Probabilidade:</label>
-                        <input type="number" name="probabilidade" min="1" max="3" class="form-control" required
-                            value="2">
+                        <input type="number" name="probabilidade" min="1" max="3" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Referência:</label>
-                        <input type="text" name="referencia" class="form-control" required
-                            value="https://cwe.mitre.org/data/definitions/20.html">
+                        <input type="text" name="referencia" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Classificação OWASP:</label>
-                        <input type="text" name="classificacaoOWASP" class="form-control" required value="A3 - Injeção">
+                        <input type="text" name="classificacaoOWASP" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Navegador:</label>
-                        <input type="text" name="navegador" class="form-control" required value="Firefox">
+                        <input type="text" name="navegador" class="form-control" required>
                     </div>
 
                     <div class="form-group">
@@ -74,8 +69,7 @@
 
                     <div class="form-group">
                         <label>URL Afetados:</label>
-                        <input type="text" name="urlAfetada" class="form-control" required
-                            value="localhost:8080/appseguranca">
+                        <input type="text" name="urlAfetada" class="form-control" required>
                     </div>
 
                     <button type="submit">Cadastrar</button>
