@@ -6,7 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
+import br.edu.infnet.appseguranca.model.domain.Usuario;
 import br.edu.infnet.appseguranca.model.domain.VulnAPI;
 import br.edu.infnet.appseguranca.model.service.VulnAPIService;
 
@@ -28,7 +30,8 @@ public class VulnAPIController {
     }
 
     @PostMapping(value = "/vulnapi/incluir")
-    public String incluir(VulnAPI vulnapi) {
+    public String incluir(VulnAPI vulnapi, @SessionAttribute("usuario") Usuario usuario) {
+        vulnapi.setUsuario(usuario);
         vulnAPIService.incluir(vulnapi);
         return "redirect:/vulnapi/lista";
     }

@@ -38,7 +38,42 @@
                         <input type="text" name="endereco" value="" class="form-control" required>
                     </div>
 
-                    <button type="submit">Cadastrar</button>
+                    <div class="form-group">
+                        <c:if test="${not empty analises}">
+                            <label>Análise:</label>
+                            <select name="solicitante" class="form-control">
+                                <c:forEach var="a" items="${analises}">
+                                    <option value="${a.id}">${a.titulo}</option>
+                                </c:forEach>
+                            </select>
+                        </c:if>
+                        <c:if test="${empty analises}">
+                            <c:set var="botao" value="disabled" />
+                            <label>Não existem análises cadastradas!</label>
+                        </c:if>
+                    </div>
+
+                    <div class="form-group">
+                        <c:if test="${not empty vulnerabilidades}">
+                            <label>Vulnerabilidades:</label>
+                            <c:forEach var="v" items="${vulnerabilidades}">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" name="vulnerabilidades" value="${v.id}"
+                                            class="form-check-input">
+                                        ${v.nome}
+                                    </label>
+                                </div>
+                            </c:forEach>
+                        </c:if>
+
+                        <c:if test="${empty vulnerabilidades}">
+                            <c:set var="botao" value="disabled" />
+                            <label>Não existem vulnerabilidades cadastradas!</label>
+                        </c:if>
+                    </div>
+
+                    <button ${botao} type="submit">Cadastrar</button>
                 </form>
             </div>
         </body>

@@ -6,7 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
+import br.edu.infnet.appseguranca.model.domain.Usuario;
 import br.edu.infnet.appseguranca.model.domain.VulnMobile;
 import br.edu.infnet.appseguranca.model.service.VulnMobileService;
 
@@ -28,7 +30,8 @@ public class VulnMobileController {
     }
 
     @PostMapping(value = "/vulnmobile/incluir")
-    public String incluir(VulnMobile vulnmobile) {
+    public String incluir(VulnMobile vulnmobile, @SessionAttribute("usuario") Usuario usuario) {
+        vulnmobile.setUsuario(usuario);
         VulnMobileService.incluir(vulnmobile);
         return "redirect:/vulnmobile/lista";
     }

@@ -31,6 +31,8 @@
                                 <th>Senha</th>
                                 <th>E-mail</th>
                                 <th>Qntd. de Aplicações</th>
+                                <th>Qntd. de Análises</th>
+                                <th>Qntd. de Vulnerabilidades</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -41,6 +43,8 @@
                                     <td>${u.senha}</td>
                                     <td>${u.email}</td>
                                     <td>${u.aplicacoes.size()}</td>
+                                    <td>${u.analises.size()}</td>
+                                    <td>${u.vulnerabilidades.size()}</td>
                                     <c:if test="${usuario.admin}">
                                         <td><a href="/usuario/${u.id}/excluir">excluir</a></td>
                                     </c:if>

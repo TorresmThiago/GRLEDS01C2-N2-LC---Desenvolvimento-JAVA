@@ -31,7 +31,7 @@ public class AnaliseService {
     }
 
     public Collection<Analise> obterLista(Integer id) {
-        return analiseRepository.obterLista(id, Sort.by(Direction.ASC, "nome"));
+        return analiseRepository.obterLista(id, Sort.by(Direction.ASC, "titulo"));
     }
 
     public Optional<Analise> obterPorId(Integer id) {
