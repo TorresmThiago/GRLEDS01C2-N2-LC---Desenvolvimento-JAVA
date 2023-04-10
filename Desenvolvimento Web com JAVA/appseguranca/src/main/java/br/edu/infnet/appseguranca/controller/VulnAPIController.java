@@ -18,6 +18,8 @@ public class VulnAPIController {
     @Autowired
     private VulnAPIService vulnAPIService;
 
+    private String msg;
+
     @GetMapping(value = "/vulnapi/cadastro")
     public String telaCadastro() {
         return "vulnAPI/cadastro";
@@ -26,6 +28,8 @@ public class VulnAPIController {
     @GetMapping(value = "/vulnapi/lista")
     public String telaLista(Model model) {
         model.addAttribute("vulnapis", vulnAPIService.obterLista());
+        model.addAttribute("msg", msg);
+        msg = null;
         return "vulnAPI/lista";
     }
 
@@ -37,14 +41,18 @@ public class VulnAPIController {
     }
 
     @GetMapping(value = "/vulnapi/{id}/excluir")
-    public String excluir(@PathVariable Integer id) {
-        vulnAPIService.excluir(id);
+    public String excluir(Model model, @PathVariable Integer id) {
+        try {
+            VulnAPI vulnerabilidade = vulnAPIService.obterPorId(id);
+            if (vulnerabilidade.getAplicacao() == null) {
+                vulnAPIService.excluir(id);
+            } else {
+                msg = "Vulnerabilidade não pode ser excluída pois está associada a uma aplicação!";
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         return "redirect:/vulnapi/lista";
     }
 
-    // @PostMapping(value = "/vulnapi/alterar")
-    // public String alterar(VulnAPI vulnapi) {
-    // vulnAPIService.alterar(vulnapi);
-    // return "redirect:/vulnapi/lista";
-    // }
 }

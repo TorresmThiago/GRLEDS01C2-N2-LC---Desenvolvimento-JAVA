@@ -27,4 +27,8 @@ public class VulnerabilidadeService {
     public Collection<Vulnerabilidade> obterLista(Integer id) {
         return vulnerabilidadeRepository.obterLista(id, Sort.by(Direction.ASC, "nome"));
     }
+
+    public Vulnerabilidade obterPorId(Integer id) {
+        return vulnerabilidadeRepository.findById(id).orElse(null);
+    }
 }

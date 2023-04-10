@@ -18,6 +18,8 @@ public class AnaliseController {
     @Autowired
     private AnaliseService analiseService;
 
+    private String msg;
+
     @GetMapping(value = "/analise/cadastro")
     public String telaCadastro() {
         return "analise/cadastro";
@@ -30,6 +32,8 @@ public class AnaliseController {
         } else {
             model.addAttribute("analises", analiseService.obterLista(usuario.getId()));
         }
+        model.addAttribute("msg", msg);
+        msg = null;
         return "analise/lista";
     }
 
@@ -41,8 +45,17 @@ public class AnaliseController {
     }
 
     @GetMapping(value = "/analise/{id}/excluir")
-    public String excluir(@PathVariable Integer id) {
-        analiseService.excluir(id);
+    public String excluir(Model model, @PathVariable Integer id) {
+        try {
+            Analise analise = analiseService.obterPorId(id);
+            if (analise.getAplicacoes() != null) {
+                msg = "Não é possível excluir uma análise que possui aplicações!";
+            } else {
+                analiseService.excluir(id);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         return "redirect:/analise/lista";
     }
 

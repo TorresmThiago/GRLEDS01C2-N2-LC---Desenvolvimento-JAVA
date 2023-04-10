@@ -18,6 +18,8 @@ public class VulnMobileController {
     @Autowired
     private VulnMobileService VulnMobileService;
 
+    private String msg;
+
     @GetMapping(value = "/vulnmobile/cadastro")
     public String telaCadastro() {
         return "vulnMobile/cadastro";
@@ -26,6 +28,8 @@ public class VulnMobileController {
     @GetMapping(value = "/vulnmobile/lista")
     public String telaLista(Model model) {
         model.addAttribute("vulnmobiles", VulnMobileService.obterLista());
+        model.addAttribute("msg", msg);
+        msg = null;
         return "vulnMobile/lista";
     }
 
@@ -37,8 +41,17 @@ public class VulnMobileController {
     }
 
     @GetMapping(value = "/vulnmobile/{id}/excluir")
-    public String excluir(@PathVariable Integer id) {
-        VulnMobileService.excluir(id);
+    public String excluir(Model model, @PathVariable Integer id) {
+        try {
+            VulnMobile vulnerabilidade = VulnMobileService.obterPorId(id);
+            if (vulnerabilidade.getAplicacao() == null) {
+                VulnMobileService.excluir(id);
+            } else {
+                msg = "Vulnerabilidade não pode ser excluída pois está associada a uma aplicação!";
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         return "redirect:/vulnmobile/lista";
     }
 

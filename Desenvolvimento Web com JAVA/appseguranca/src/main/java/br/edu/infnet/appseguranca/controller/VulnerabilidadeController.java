@@ -17,6 +17,8 @@ public class VulnerabilidadeController {
     @Autowired
     private VulnerabilidadeService vulnerabilidadeService;
 
+    private String msg;
+
     @GetMapping(value = "/vulnerabilidade/lista")
     public String telaLista(Model model, @SessionAttribute("usuario") Usuario usuario) {
         if (usuario.isAdmin()) {
@@ -24,12 +26,23 @@ public class VulnerabilidadeController {
         } else {
             model.addAttribute("vulnerabilidades", vulnerabilidadeService.obterLista(usuario.getId()));
         }
+        model.addAttribute("msg", msg);
+        msg = null;
         return "vulnerabilidades";
     }
 
     @GetMapping(value = "/vulnerabilidade/{id}/excluir")
-    public String excluir(@PathVariable Integer id) {
-        vulnerabilidadeService.excluir(id);
+    public String excluir(Model model, @PathVariable Integer id) {
+        try {
+            Vulnerabilidade vulnerabilidade = vulnerabilidadeService.obterPorId(id);
+            if (vulnerabilidade.getAplicacao() == null) {
+                vulnerabilidadeService.excluir(id);
+            } else {
+                msg = "Vulnerabilidade não pode ser excluída pois está associada a uma aplicação!";
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         return "redirect:/vulnerabilidade/lista";
     }
 }

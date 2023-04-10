@@ -12,7 +12,6 @@
 
         <body>
             <c:import url="/WEB-INF/jsp/menu.jsp" />
-
             <div class="container">
 
                 <h3>Listagem de Análises</h3>
@@ -20,6 +19,12 @@
                 <form action="/analise/cadastro" method="get">
                     <button type="submit">Registrar nova Análise</button>
                 </form>
+
+                <c:if test="${not empty msg}">
+                    <div class="alert alert-danger">
+                        <strong>Atenção!</strong> ${msg}
+                    </div>
+                </c:if>
 
                 <c:if test="${empty analises}">
                     <div class="alert alert-danger">

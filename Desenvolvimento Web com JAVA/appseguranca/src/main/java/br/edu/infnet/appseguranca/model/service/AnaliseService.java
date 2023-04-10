@@ -34,8 +34,8 @@ public class AnaliseService {
         return analiseRepository.obterLista(id, Sort.by(Direction.ASC, "titulo"));
     }
 
-    public Optional<Analise> obterPorId(Integer id) {
-        return analiseRepository.findById(id);
+    public Analise obterPorId(Integer id) {
+        return analiseRepository.findById(id).orElse(null);
     }
 
     public void alterar(Analise analise) {

@@ -17,6 +17,12 @@
 
                 <h3>Listagem de Vulnerabilidades</h3>
 
+                <c:if test="${not empty msg}">
+                    <div class="alert alert-success">
+                        <strong>Atenção!</strong> ${msg}.
+                    </div>
+                </c:if>
+
                 <c:if test="${empty vulnerabilidades}">
                     <div class="alert alert-danger">
                         <strong>Atenção!</strong> Não há vulnerabilidades cadastradas.

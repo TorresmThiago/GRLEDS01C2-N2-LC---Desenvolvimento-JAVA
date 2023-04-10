@@ -21,6 +21,12 @@
                     <button type="submit">Registrar nova Vulnerabilidade</button>
                 </form>
 
+                <c:if test="${not empty msg}">
+                    <div class="alert alert-danger">
+                        <strong>Atenção!</strong> ${msg}.
+                    </div>
+                </c:if>
+
                 <c:if test="${empty vulnapis}">
                     <div class="alert alert-danger">
                         <strong>Atenção!</strong> Não há vulnerabilidade cadastradas.
