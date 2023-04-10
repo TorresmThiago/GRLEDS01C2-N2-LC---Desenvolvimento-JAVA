@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
 import br.edu.infnet.appseguranca.model.domain.VulnMobile;
@@ -12,5 +13,5 @@ import br.edu.infnet.appseguranca.model.domain.VulnMobile;
 public interface VulnMobileRepository extends CrudRepository<VulnMobile, Integer> {
 
     @Query("from VulnMobile v where v.usuario.id = :userId")
-    public Collection<VulnMobile> obterLista(Integer userId);
+    public Collection<VulnMobile> obterLista(Integer userId, Sort sort);
 }

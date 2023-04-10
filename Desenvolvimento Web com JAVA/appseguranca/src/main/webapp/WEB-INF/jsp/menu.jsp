@@ -4,16 +4,16 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">AppSegurança</a>
+                    <a class="navbar-brand" href="/">AppSegurança</a>
                 </div>
 
                 <ul class="nav navbar-nav">
                     <li><a href="/">Home</a></li>
                     <c:if test="${not empty usuario}">
                         <li><a href="/usuario/lista">Usuário</a></li>
-                        <li><a href="#">Análise</a></li>
+                        <li><a href="/analise/lista">Análise</a></li>
                         <li><a href="/aplicacao/lista">Aplicação</a></li>
-                        <li><a href="#">Vulnerabilidades</a></li>
+                        <li><a href="/vulnerabilidade/lista">Vulnerabilidades</a></li>
                         <li><a href="/vulnweb/lista">Web</a></li>
                         <li><a href="/vulnapi/lista">API</a></li>
                         <li><a href="/vulnmobile/lista">Mobile</a></li>

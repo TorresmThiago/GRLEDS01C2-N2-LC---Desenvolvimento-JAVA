@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.data.domain.Sort;
 
 import br.edu.infnet.appseguranca.model.domain.VulnWeb;
 
@@ -12,5 +13,5 @@ import br.edu.infnet.appseguranca.model.domain.VulnWeb;
 public interface VulnWebRepository extends CrudRepository<VulnWeb, Integer> {
 
     @Query("from VulnWeb v where v.usuario.id = :userId")
-    public Collection<VulnWeb> obterLista(Integer userId);
+    public Collection<VulnWeb> obterLista(Integer userId, Sort sort);
 }

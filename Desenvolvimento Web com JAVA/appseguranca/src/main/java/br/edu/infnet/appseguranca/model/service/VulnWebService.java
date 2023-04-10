@@ -4,6 +4,8 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 
 import br.edu.infnet.appseguranca.model.domain.Usuario;
 import br.edu.infnet.appseguranca.model.domain.VulnWeb;
@@ -29,7 +31,7 @@ public class VulnWebService {
     }
 
     public Collection<VulnWeb> obterLista(Usuario usuario) {
-        return (Collection<VulnWeb>) vulnWebRepository.obterLista(usuario.getId());
+        return (Collection<VulnWeb>) vulnWebRepository.obterLista(usuario.getId(), Sort.by(Direction.ASC, "nome"));
     }
 
     public VulnWeb obterPorId(Integer id) {

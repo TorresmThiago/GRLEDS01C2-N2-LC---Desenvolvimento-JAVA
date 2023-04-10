@@ -3,6 +3,8 @@ package br.edu.infnet.appseguranca.model.service;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.appseguranca.model.domain.Usuario;
@@ -29,7 +31,7 @@ public class VulnAPIService {
     }
 
     public Collection<VulnAPI> obterLista(Usuario usuario) {
-        return (Collection<VulnAPI>) vulnAPIRepository.obterLista(usuario.getId());
+        return (Collection<VulnAPI>) vulnAPIRepository.obterLista(usuario.getId(), Sort.by(Direction.ASC, "nome"));
     }
 
     public VulnAPI obterPorId(Integer id) {

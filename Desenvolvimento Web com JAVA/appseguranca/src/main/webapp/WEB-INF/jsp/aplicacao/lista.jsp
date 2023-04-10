@@ -37,6 +37,7 @@
                                 <th>Ambiente</th>
                                 <th>Endereço</th>
                                 <th>Criado por</th>
+                                <th>Qnt. Vulnerabilidades</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -48,6 +49,7 @@
                                     <td>${aplicacao.ambiente}</td>
                                     <td>${aplicacao.endereco}</td>
                                     <td>${aplicacao.usuario.nome}</td>
+                                    <td>${aplicacao.vulnerabilidades.size()}</td>
                                     <td><a href="/aplicacao/${aplicacao.id}/excluir">excluir</a></td>
                                 </tr>
                             </c:forEach>
