@@ -41,6 +41,7 @@
                                 <th>Navegador</th>
                                 <th>URL Afetada</th>
                                 <th>Rede Interna</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>

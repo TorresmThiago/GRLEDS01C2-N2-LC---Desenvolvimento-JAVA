@@ -107,6 +107,14 @@ public class Usuario {
         this.aplicacoes = aplicacoes;
     }
 
+    public List<Analise> getAnalises() {
+        return analises;
+    }
+
+    public void setAnalises(List<Analise> analises) {
+        this.analises = analises;
+    }
+
     @Override
     public String toString() {
         return "Usuario [email=" + email + ", nome=" + nome + "]";

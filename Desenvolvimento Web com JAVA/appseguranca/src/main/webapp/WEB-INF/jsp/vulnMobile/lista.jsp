@@ -40,6 +40,7 @@
                                 <th>Classificação OWASP</th>
                                 <th>Sistema Operacional</th>
                                 <th>Pacotes Afetados</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>

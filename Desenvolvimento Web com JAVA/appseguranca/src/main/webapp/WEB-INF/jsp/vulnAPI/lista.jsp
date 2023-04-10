@@ -41,6 +41,7 @@
                                 <th>Host</th>
                                 <th>Requisição</th>
                                 <th>Método</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>

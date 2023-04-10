@@ -38,6 +38,7 @@
                                 <th>Endereço</th>
                                 <th>Criado por</th>
                                 <th>Qnt. Vulnerabilidades</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
